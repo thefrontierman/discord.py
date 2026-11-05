@@ -461,14 +461,17 @@ class HybridAppCommand(discord.app_commands.Command[CogT, P, T]):
         if not await bot.can_run(ctx):
             return False
 
-        if self.parent is not None and self.parent is not self.binding:
-            # For commands with a parent which isn't the binding, i.e.
-            # <binding>
-            #     <parent>
-            #         <command>
-            # The parent check needs to be called first
-            if not await maybe_coroutine(self.parent.interaction_check, interaction):
-                return False
+        # For commands with a parent which isn't the binding, i.e.
+        # <binding>
+        #     <parent>
+        #         <command>
+        # The parent check needs to be called first
+        if (
+            self.parent is not None
+            and self.parent is not self.binding
+            and not await maybe_coroutine(self.parent.interaction_check, interaction)
+        ):
+            return False
 
         if self.binding is not None:
             try:
