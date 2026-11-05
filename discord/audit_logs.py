@@ -301,7 +301,7 @@ class AuditLogDiff:
         yield from self.__dict__.items()
 
     def __repr__(self) -> str:
-        values = ' '.join('%s=%r' % item for item in self.__dict__.items())
+        values = ' '.join(f'{key}={value!r}' for key, value in self.__dict__.items())
         return f'<AuditLogDiff {values}>'
 
     if TYPE_CHECKING:
