@@ -61,11 +61,11 @@ from ..abc import GuildChannel
 from ..threads import Thread
 
 __all__ = (
+    'ChannelSelect',
+    'MentionableSelect',
+    'RoleSelect',
     'Select',
     'UserSelect',
-    'RoleSelect',
-    'MentionableSelect',
-    'ChannelSelect',
     'select',
 )
 
