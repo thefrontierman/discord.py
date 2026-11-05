@@ -1283,7 +1283,7 @@ class Guild(Hashable):
             return utils.find(lambda m: m.name == username and m.discriminator == discriminator, members)
 
         def pred(m: Member) -> bool:
-            return m.nick == name or m.global_name == name or m.name == name
+            return name in (m.nick, m.global_name, m.name)
 
         return utils.find(pred, members)
 
