@@ -470,7 +470,7 @@ class RawTypingEvent(_RawReprMixin):
     def __init__(self, data: TypingStartEvent, /) -> None:
         self.channel_id: int = int(data['channel_id'])
         self.user_id: int = int(data['user_id'])
-        self.user: Optional[Union[User, Member]] = None
+        self.user: User | Member | None = None
         self.timestamp: datetime.datetime = datetime.datetime.fromtimestamp(data['timestamp'], tz=datetime.timezone.utc)
         self.guild_id: Optional[int] = _get_as_snowflake(data, 'guild_id')
 
@@ -491,7 +491,7 @@ class RawMemberRemoveEvent(_RawReprMixin):
     __slots__ = ('user', 'guild_id')
 
     def __init__(self, data: GuildMemberRemoveEvent, user: User, /) -> None:
-        self.user: Union[User, Member] = user
+        self.user: User | Member = user
         self.guild_id: int = int(data['guild_id'])
 
 
