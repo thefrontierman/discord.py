@@ -541,7 +541,7 @@ class Poll:
         """
 
         if not self._message:
-            return
+            return None
         return self._message.created_at
 
     @property
