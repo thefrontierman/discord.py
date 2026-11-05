@@ -236,7 +236,7 @@ def to_path(parser: argparse.ArgumentParser, name: str, *, replace_spaces: bool 
     path = PurePath(name)
     if isinstance(path, PureWindowsPath) and path.drive:
         drive, rest = path.parts[0], path.parts[1:]
-        transformed = tuple(map(lambda p: p.translate(_translation_table), rest))
+        transformed = tuple(p.translate(_translation_table) for p in rest)
         name = drive + '\\'.join(transformed)
 
     else:
