@@ -48,10 +48,10 @@ if TYPE_CHECKING:
     from .role import Role
 
 __all__ = (
+    'AutoModAction',
+    'AutoModRule',
     'AutoModRuleAction',
     'AutoModTrigger',
-    'AutoModRule',
-    'AutoModAction',
 )
 
 
