@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Literal, Dict, TypedDict, List, Optional
+from typing import Literal, Dict, TypedDict, List
 from typing_extensions import NotRequired
 
 from .user import User
@@ -46,7 +46,7 @@ class BaseAppInfo(TypedDict):
     id: Snowflake
     name: str
     verify_key: str
-    icon: Optional[str]
+    icon: str | None
     summary: str
     description: str
     flags: int
@@ -55,9 +55,9 @@ class BaseAppInfo(TypedDict):
     terms_of_service_url: NotRequired[str]
     privacy_policy_url: NotRequired[str]
     rpc_origins: NotRequired[List[str]]
-    interactions_endpoint_url: NotRequired[Optional[str]]
+    interactions_endpoint_url: NotRequired[str | None]
     redirect_uris: NotRequired[List[str]]
-    role_connections_verification_url: NotRequired[Optional[str]]
+    role_connections_verification_url: NotRequired[str | None]
 
 
 class AppInfo(BaseAppInfo):
