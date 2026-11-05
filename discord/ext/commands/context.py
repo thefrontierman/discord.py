@@ -426,8 +426,8 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         # consider this to be an *incredibly* strange use case. I'd rather go
         # for this common use case rather than waste performance for the
         # odd one.
-        pattern = re.compile(r'<@!?%s>' % user.id)
-        return pattern.sub('@%s' % user.display_name.replace('\\', r'\\'), self.prefix)
+        pattern = re.compile(rf'<@!?{user.id}>')
+        return pattern.sub('@{}'.format(user.display_name.replace('\\', r'\\')), self.prefix)
 
     @property
     def cog(self) -> Optional[Cog]:
