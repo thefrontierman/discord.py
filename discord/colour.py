@@ -28,7 +28,7 @@ import colorsys
 import random
 import re
 
-from typing import TYPE_CHECKING, Optional, Tuple, Union
+from typing import TYPE_CHECKING, Optional, Union
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -160,7 +160,7 @@ class Colour:
         """:class:`int`: Returns the blue component of the colour."""
         return self._get_byte(0)
 
-    def to_rgb(self) -> Tuple[int, int, int]:
+    def to_rgb(self) -> tuple[int, int, int]:
         """Tuple[:class:`int`, :class:`int`, :class:`int`]: Returns an (r, g, b) tuple representing the colour."""
         return (self.r, self.g, self.b)
 
