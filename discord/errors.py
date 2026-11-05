@@ -34,21 +34,21 @@ if TYPE_CHECKING:
     from .interactions import Interaction
 
 __all__ = (
-    'DiscordException',
     'ClientException',
+    'ConnectionClosed',
+    'DiscordException',
+    'DiscordServerError',
+    'FFmpegProcessError',
+    'Forbidden',
     'GatewayNotFound',
     'HTTPException',
-    'RateLimited',
-    'Forbidden',
-    'NotFound',
-    'DiscordServerError',
+    'InteractionResponded',
     'InvalidData',
     'LoginFailure',
-    'ConnectionClosed',
-    'PrivilegedIntentsRequired',
-    'InteractionResponded',
     'MissingApplicationID',
-    'FFmpegProcessError',
+    'NotFound',
+    'PrivilegedIntentsRequired',
+    'RateLimited',
 )
 
 APP_ID_NOT_FOUND = (
