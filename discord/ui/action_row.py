@@ -342,9 +342,7 @@ class ActionRow(Item[V]):
         return self
 
     def to_component_dict(self) -> Dict[str, Any]:
-        components = []
-        for component in self.children:
-            components.append(component.to_component_dict())
+        components = [component.to_component_dict() for component in self.children]
 
         base = {
             'type': self.type.value,
