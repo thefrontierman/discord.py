@@ -228,7 +228,6 @@ class Item(Generic[V]):
         interaction: :class:`.Interaction`
             The interaction that triggered this UI item.
         """
-        pass
 
     async def interaction_check(self, interaction: Interaction[ClientT], /) -> bool:
         """|coro|
