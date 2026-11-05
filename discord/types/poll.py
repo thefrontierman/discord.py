@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 
-from typing import List, TypedDict, Optional, Literal, TYPE_CHECKING
+from typing import List, TypedDict, Literal, TYPE_CHECKING
 from typing_extensions import NotRequired
 
 from .snowflake import Snowflake
@@ -40,7 +40,7 @@ LayoutType = Literal[1]  # 1 = Default
 
 class PollMedia(TypedDict):
     text: str
-    emoji: NotRequired[Optional[PartialEmoji]]
+    emoji: NotRequired[PartialEmoji | None]
 
 
 class PollAnswer(TypedDict):
