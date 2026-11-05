@@ -61,7 +61,7 @@ class PrimaryGuild:
             Users can have their primary guild publicly displayed while still having an :attr:`id` of ``None``. Be careful when checking this attribute!
     """
 
-    __slots__ = ('id', 'identity_enabled', 'tag', '_badge', '_state')
+    __slots__ = ('_badge', '_state', 'id', 'identity_enabled', 'tag')
 
     def __init__(self, *, state: ConnectionState, data: PrimaryGuildPayload) -> None:
         self._state = state
