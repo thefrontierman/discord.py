@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 import datetime
-from typing import List, Optional, TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
 from . import utils
 from .mixins import Hashable
@@ -90,7 +90,7 @@ class Subscription(Hashable):
         self.current_period_start: datetime.datetime = utils.parse_time(data['current_period_start'])
         self.current_period_end: datetime.datetime = utils.parse_time(data['current_period_end'])
         self.status: SubscriptionStatus = try_enum(SubscriptionStatus, data['status'])
-        self.canceled_at: Optional[datetime.datetime] = utils.parse_time(data['canceled_at'])
+        self.canceled_at: datetime.datetime | None = utils.parse_time(data['canceled_at'])
         self.renewal_sku_ids: List[int] = list(map(int, data['renewal_sku_ids'] or []))
 
     def __repr__(self) -> str:
@@ -102,6 +102,6 @@ class Subscription(Hashable):
         return utils.snowflake_time(self.id)
 
     @property
-    def user(self) -> Optional[User]:
+    def user(self) -> User | None:
         """Optional[:class:`User`]: The user that is subscribed."""
         return self._state.get_user(self.user_id)
