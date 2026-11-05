@@ -182,14 +182,13 @@ class FileUpload(Item[V]):
 
     @classmethod
     def from_component(cls, component: FileUploadComponent) -> Self:
-        self = cls(
+        return cls(
             id=component.id,
             custom_id=component.custom_id,
             max_values=component.max_values,
             min_values=component.min_values,
             required=component.required,
         )
-        return self
 
     @property
     def type(self) -> Literal[ComponentType.file_upload]:
