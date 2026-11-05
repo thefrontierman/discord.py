@@ -31,6 +31,7 @@ import re
 
 from typing import (
     TYPE_CHECKING,
+    ClassVar,
     Optional,
     Generator,
     List,
@@ -363,7 +364,7 @@ class HelpCommand:
         ones passed in the :class:`.Command` constructor.
     """
 
-    MENTION_TRANSFORMS = {
+    MENTION_TRANSFORMS: ClassVar[dict[str, str]] = {
         '@everyone': '@\u200beveryone',
         '@here': '@\u200bhere',
         r'<@!?[0-9]{17,22}>': '@deleted-user',
