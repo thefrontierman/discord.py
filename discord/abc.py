@@ -66,12 +66,12 @@ from .flags import InviteFlags
 import warnings
 
 __all__ = (
-    'Snowflake',
-    'User',
-    'PrivateChannel',
+    'Connectable',
     'GuildChannel',
     'Messageable',
-    'Connectable',
+    'PrivateChannel',
+    'Snowflake',
+    'User',
 )
 
 T = TypeVar('T', bound=VoiceProtocol)
