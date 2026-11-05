@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional, TypedDict, Union
+from typing import List, Literal, Optional, TypedDict
 from typing_extensions import NotRequired, Required
 
 from .snowflake import Snowflake, SnowflakeList
@@ -211,7 +211,7 @@ class Message(PartialMessage):
     member: NotRequired[Member]
     mention_channels: NotRequired[List[ChannelMention]]
     reactions: NotRequired[List[Reaction]]
-    nonce: NotRequired[Union[int, str]]
+    nonce: NotRequired[int | str]
     webhook_id: NotRequired[Snowflake]
     activity: NotRequired[MessageActivity]
     application: NotRequired[MessageApplication]
