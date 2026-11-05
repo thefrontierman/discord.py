@@ -1678,10 +1678,7 @@ class HTTPClient:
         try:
             mime_type = utils._get_mime_type_for_image(initial_bytes)
         except ValueError:
-            if initial_bytes.startswith(b'{'):
-                mime_type = 'application/json'
-            else:
-                mime_type = 'application/octet-stream'
+            mime_type = 'application/json' if initial_bytes.startswith(b'{') else 'application/octet-stream'
         finally:
             file.reset()
 
