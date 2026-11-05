@@ -216,10 +216,9 @@ class WebhookAdapter:
 
                         if response.status_code == 403:
                             raise Forbidden(response, data)
-                        elif response.status_code == 404:
+                        if response.status_code == 404:
                             raise NotFound(response, data)
-                        else:
-                            raise HTTPException(response, data)
+                        raise HTTPException(response, data)
 
                 except OSError as e:
                     if attempt < 4 and e.errno in (54, 10054):
