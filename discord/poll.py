@@ -35,6 +35,7 @@ from .emoji import PartialEmoji, Emoji
 from .user import User
 from .object import Object
 from .errors import ClientException
+import contextlib
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -465,10 +466,8 @@ class Poll:
         self._state = state
         self._expiry = expiry
 
-        try:
+        with contextlib.suppress(KeyError):
             self._update_results(data['results'])
-        except KeyError:
-            pass
 
         return self
 
