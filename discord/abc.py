@@ -798,8 +798,7 @@ class GuildChannel:
         if default is None:
             if self._state.self_id == obj.id:
                 return Permissions._user_installed_permissions(in_guild=True)
-            else:
-                return Permissions.none()
+            return Permissions.none()
 
         base = Permissions(default.permissions.value)
 
