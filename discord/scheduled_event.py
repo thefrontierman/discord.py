@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import TYPE_CHECKING, AsyncIterator, Dict, Optional, Union, overload, Literal
+from typing import TYPE_CHECKING, AsyncIterator, Optional, Union, overload, Literal
 
 from .asset import Asset
 from .enums import EventStatus, EntityType, PrivacyLevel, try_enum
@@ -129,7 +129,7 @@ class ScheduledEvent(Hashable):
 
     def __init__(self, *, state: ConnectionState, data: GuildScheduledEventPayload) -> None:
         self._state = state
-        self._users: Dict[int, User] = {}
+        self._users: dict[int, User] = {}
         self._update(data)
 
     def _update(self, data: GuildScheduledEventPayload) -> None:
