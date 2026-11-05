@@ -728,7 +728,7 @@ class Embed:
         try:
             field = self._fields[index]
         except (TypeError, IndexError, AttributeError):
-            raise IndexError('field index out of range')
+            raise IndexError('field index out of range') from None
 
         field['name'] = str(name)
         field['value'] = str(value)
