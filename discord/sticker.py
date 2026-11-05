@@ -23,7 +23,7 @@ DEALINGS IN THE SOFTWARE.
 """
 
 from __future__ import annotations
-from typing import Literal, TYPE_CHECKING, List, Optional, Tuple, Type, Union
+from typing import Literal, TYPE_CHECKING, List, Optional, Tuple, Type
 import unicodedata
 
 from .mixins import Hashable
@@ -212,7 +212,7 @@ class StickerItem(_StickerTag):
     def __str__(self) -> str:
         return self.name
 
-    async def fetch(self) -> Union[Sticker, StandardSticker, GuildSticker]:
+    async def fetch(self) -> Sticker | StandardSticker | GuildSticker:
         """|coro|
 
         Attempts to retrieve the full sticker data of the sticker item.
@@ -511,7 +511,7 @@ class GuildSticker(Sticker):
         await self._state.http.delete_guild_sticker(self.guild_id, self.id, reason)
 
 
-def _sticker_factory(sticker_type: Literal[1, 2]) -> Tuple[Type[Union[StandardSticker, GuildSticker, Sticker]], StickerType]:
+def _sticker_factory(sticker_type: Literal[1, 2]) -> Tuple[Type[StandardSticker | GuildSticker | Sticker], StickerType]:
     value = try_enum(StickerType, sticker_type)
     if value == StickerType.standard:
         return StandardSticker, value
