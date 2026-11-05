@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Dict, Generator, List, Literal, Optional, TypeVar, Union, ClassVar
+from typing import TYPE_CHECKING, Any, Dict, Generator, List, Literal, TypeVar, Union, ClassVar
 
 from .item import Item
 from .text_display import TextDisplay
@@ -75,7 +75,7 @@ class Section(Item[V]):
         self,
         *children: Union[Item[V], str],
         accessory: Item[V],
-        id: Optional[int] = None,
+        id: int | None = None,
     ) -> None:
         super().__init__()
         self._children: List[Item[V]] = []
@@ -216,7 +216,7 @@ class Section(Item[V]):
 
         return self
 
-    def find_item(self, id: int, /) -> Optional[Item[V]]:
+    def find_item(self, id: int, /) -> Item[V] | None:
         """Gets an item with :attr:`Item.id` set as ``id``, or ``None`` if
         not found.
 
