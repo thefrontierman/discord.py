@@ -32,22 +32,22 @@ from ..utils import _human_join
 
 __all__ = (
     'AppCommandError',
-    'CommandInvokeError',
-    'TransformerError',
-    'TranslationError',
+    'BotMissingPermissions',
     'CheckFailure',
     'CommandAlreadyRegistered',
-    'CommandSignatureMismatch',
-    'CommandNotFound',
+    'CommandInvokeError',
     'CommandLimitReached',
-    'NoPrivateMessage',
-    'MissingRole',
-    'MissingAnyRole',
-    'MissingPermissions',
-    'BotMissingPermissions',
+    'CommandNotFound',
     'CommandOnCooldown',
-    'MissingApplicationID',
+    'CommandSignatureMismatch',
     'CommandSyncFailure',
+    'MissingAnyRole',
+    'MissingApplicationID',
+    'MissingPermissions',
+    'MissingRole',
+    'NoPrivateMessage',
+    'TransformerError',
+    'TranslationError',
 )
 
 if TYPE_CHECKING:
