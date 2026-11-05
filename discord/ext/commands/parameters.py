@@ -87,7 +87,7 @@ class Parameter(inspect.Parameter):
     .. versionadded:: 2.0
     """
 
-    __slots__ = ('_displayed_default', '_description', '_fallback', '_displayed_name')
+    __slots__ = ('_description', '_displayed_default', '_displayed_name', '_fallback')
 
     def __init__(
         self,
