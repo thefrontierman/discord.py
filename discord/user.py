@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Dict, List, Optional, TYPE_CHECKING
 
 import discord.abc
 from .asset import Asset
@@ -99,7 +99,7 @@ class BaseUser(_UserTag):
         _primary_guild: Optional[PrimaryGuildPayload]
         _collectibles: Optional[UserCollectiblesPayload]
 
-    def __init__(self, *, state: ConnectionState, data: Union[UserPayload, PartialUserPayload]) -> None:
+    def __init__(self, *, state: ConnectionState, data: UserPayload | PartialUserPayload) -> None:
         self._state = state
         self._update(data)
 
@@ -123,7 +123,7 @@ class BaseUser(_UserTag):
     def __hash__(self) -> int:
         return self.id >> 22
 
-    def _update(self, data: Union[UserPayload, PartialUserPayload]) -> None:
+    def _update(self, data: UserPayload | PartialUserPayload) -> None:
         self.name = data['username']
         self.id = int(data['id'])
         self.discriminator = data['discriminator']
