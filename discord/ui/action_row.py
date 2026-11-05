@@ -142,11 +142,12 @@ class ActionRow(Item[V]):
     def __init_subclass__(cls) -> None:
         super().__init_subclass__()
 
-        children: Dict[str, ItemCallbackType[Self, Any]] = {}
-        for base in reversed(cls.__mro__):
-            for name, member in base.__dict__.items():
-                if hasattr(member, '__discord_ui_model_type__'):
-                    children[name] = member
+        children: Dict[str, ItemCallbackType[Self, Any]] = {
+            name: member
+            for base in reversed(cls.__mro__)
+            for name, member in base.__dict__.items()
+            if hasattr(member, '__discord_ui_model_type__')
+        }
 
         if len(children) > 5:
             raise TypeError('ActionRow cannot have more than 5 children')
