@@ -29,7 +29,7 @@ from .user import BaseUser
 from .asset import Asset
 from .enums import TeamMemberRole, TeamMembershipState, try_enum
 
-from typing import TYPE_CHECKING, Optional, List
+from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
     from .state import ConnectionState
@@ -71,7 +71,7 @@ class Team:
         self.name: str = data['name']
         self._icon: Optional[str] = data['icon']
         self.owner_id: Optional[int] = utils._get_as_snowflake(data, 'owner_user_id')
-        self.members: List[TeamMember] = [TeamMember(self, self._state, member) for member in data['members']]
+        self.members: list[TeamMember] = [TeamMember(self, self._state, member) for member in data['members']]
 
     def __repr__(self) -> str:
         return f'<{self.__class__.__name__} id={self.id} name={self.name}>'
@@ -141,7 +141,7 @@ class TeamMember(BaseUser):
     def __init__(self, team: Team, state: ConnectionState, data: TeamMemberPayload) -> None:
         self.team: Team = team
         self.membership_state: TeamMembershipState = try_enum(TeamMembershipState, data['membership_state'])
-        self.permissions: List[str] = data.get('permissions', [])
+        self.permissions: list[str] = data.get('permissions', [])
         self.role: TeamMemberRole = try_enum(TeamMemberRole, data['role'])
         super().__init__(state=state, data=data['user'])
 
