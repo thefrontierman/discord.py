@@ -241,10 +241,7 @@ class Reaction:
             if the member has left the guild.
         """
 
-        if not isinstance(self.emoji, str):
-            emoji = f'{self.emoji.name}:{self.emoji.id}'
-        else:
-            emoji = self.emoji
+        emoji = f'{self.emoji.name}:{self.emoji.id}' if not isinstance(self.emoji, str) else self.emoji
 
         if limit is None:
             limit = self.count
