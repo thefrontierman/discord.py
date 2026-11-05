@@ -78,6 +78,7 @@ class BucketType(Enum):
             # NOTE: PrivateChannel doesn't actually have an id attribute but we assume we are
             # receiving a DMChannel or GroupChannel which inherit from PrivateChannel and do
             return (msg.channel if isinstance(msg.channel, PrivateChannel) else msg.author.top_role).id  # type: ignore
+        return None
 
     def __call__(self, msg: Union[Message, Context[Any]]) -> Any:
         return self.get_key(msg)
