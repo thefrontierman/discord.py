@@ -284,10 +284,7 @@ class PollAnswer:
             raise ClientException('You cannot fetch users to a poll not sent with a message')
 
         if limit is None:
-            if not self._message.poll:
-                limit = 100
-            else:
-                limit = self.vote_count or 100
+            limit = 100 if not self._message.poll else self.vote_count or 100
 
         while limit > 0:
             retrieve = min(limit, 100)
