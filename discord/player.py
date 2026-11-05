@@ -114,7 +114,6 @@ class AudioSource:
         Useful for clearing buffer data or processes after
         it is done playing audio.
         """
-        pass
 
     def __del__(self) -> None:
         self.cleanup()
