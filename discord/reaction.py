@@ -98,7 +98,7 @@ class Reaction:
         .. versionadded:: 2.4
     """
 
-    __slots__ = ('message', 'count', 'emoji', 'me', 'me_burst', 'normal_count', 'burst_count')
+    __slots__ = ('burst_count', 'count', 'emoji', 'me', 'me_burst', 'message', 'normal_count')
 
     def __init__(self, *, message: Message, data: ReactionPayload, emoji: Optional[Union[PartialEmoji, Emoji, str]] = None):
         self.message: Message = message
