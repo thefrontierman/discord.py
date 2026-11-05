@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Generator, Literal, Optional, Tuple, TypeVar
+from typing import TYPE_CHECKING, Generator, Literal, Optional, TypeVar
 
 from ..components import LabelComponent
 from ..enums import ComponentType
@@ -79,7 +79,7 @@ class Label(Item[V]):
         The component to display below the label.
     """
 
-    __item_repr_attributes__: Tuple[str, ...] = (
+    __item_repr_attributes__: tuple[str, ...] = (
         'text',
         'description',
         'component',
