@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 from datetime import datetime
 
 from .asset import Asset
@@ -74,14 +74,14 @@ class PrimaryGuild:
         self._badge = data.get('badge')
 
     @property
-    def badge(self) -> Optional[Asset]:
+    def badge(self) -> Asset | None:
         """Optional[:class:`Asset`]: Returns the primary guild's asset"""
         if self._badge is not None and self.id is not None:
             return Asset._from_primary_guild(self._state, self.id, self._badge)
         return None
 
     @property
-    def created_at(self) -> Optional[datetime]:
+    def created_at(self) -> datetime | None:
         """Optional[:class:`datetime.datetime`]: Returns the primary guild's creation time in UTC."""
         if self.id is not None:
             return snowflake_time(self.id)
