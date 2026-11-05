@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Literal, Optional, TypeVar, Union
+from typing import TYPE_CHECKING, Literal, Optional, TypeVar, Union
 
 from .item import Item
 from ..enums import ComponentType
@@ -85,12 +85,12 @@ class MediaGallery(Item[V]):
         return f'<{self.__class__.__name__} items={len(self._underlying.items)}>'
 
     @property
-    def items(self) -> List[MediaGalleryItem]:
+    def items(self) -> list[MediaGalleryItem]:
         """List[:class:`.MediaGalleryItem`]: Returns a read-only list of this gallery's items."""
         return self._underlying.items.copy()
 
     @items.setter
-    def items(self, value: List[MediaGalleryItem]) -> None:
+    def items(self, value: list[MediaGalleryItem]) -> None:
         if len(value) > 10:
             raise ValueError('media gallery only accepts up to 10 items')
 
