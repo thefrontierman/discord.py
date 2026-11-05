@@ -23,7 +23,7 @@ DEALINGS IN THE SOFTWARE.
 """
 
 from __future__ import annotations
-from typing import TYPE_CHECKING, Literal, Optional, TypedDict, List, Union
+from typing import TYPE_CHECKING, Literal, TypedDict, List, Union
 
 from .emoji import PartialEmoji
 from .snowflake import Snowflake
@@ -40,7 +40,7 @@ class _PromptOption(TypedDict):
     channel_ids: List[Snowflake]
     role_ids: List[Snowflake]
     title: str
-    description: Optional[str]
+    description: str | None
 
 
 class CreatePromptOption(_PromptOption):
