@@ -173,18 +173,18 @@ class PartialInviteGuild:
     """
 
     __slots__ = (
-        '_state',
-        '_icon',
         '_banner',
+        '_icon',
         '_splash',
+        '_state',
+        'description',
         'features',
         'id',
         'name',
-        'verification_level',
-        'description',
-        'vanity_url_code',
         'nsfw_level',
         'premium_subscription_count',
+        'vanity_url_code',
+        'verification_level',
     )
 
     def __init__(self, state: ConnectionState, data: InviteGuildPayload, id: int):
@@ -361,27 +361,27 @@ class Invite(Hashable):
     """
 
     __slots__ = (
-        'max_age',
-        'code',
-        'guild',
-        'revoked',
-        'created_at',
-        'uses',
-        'temporary',
-        'max_uses',
-        'inviter',
-        'channel',
-        'target_user',
-        'target_type',
+        '_flags',
         '_state',
         'approximate_member_count',
         'approximate_presence_count',
-        'target_application',
+        'channel',
+        'code',
+        'created_at',
         'expires_at',
+        'guild',
+        'inviter',
+        'max_age',
+        'max_uses',
+        'revoked',
         'scheduled_event',
         'scheduled_event_id',
+        'target_application',
+        'target_type',
+        'target_user',
+        'temporary',
         'type',
-        '_flags',
+        'uses',
     )
 
     BASE = 'https://discord.gg'
