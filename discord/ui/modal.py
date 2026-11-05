@@ -30,7 +30,7 @@ import os
 from copy import deepcopy
 from typing import TYPE_CHECKING, Any, Dict, Optional, Sequence, ClassVar, List
 
-from ..utils import MISSING, find
+from ..utils import MISSING
 from .._types import ClientT
 from .item import Item
 from .view import BaseView
@@ -189,9 +189,9 @@ class Modal(BaseView):
                 if custom_id is None:
                     continue
 
-                item = find(
-                    lambda i: getattr(i, 'custom_id', None) == custom_id,
-                    self.walk_children(),
+                item = next(
+                    (i for i in self.walk_children() if getattr(i, 'custom_id', None) == custom_id),
+                    None,
                 )
                 if item is None:
                     _log.debug('Modal interaction referencing unknown item custom_id %s. Discarding', custom_id)
