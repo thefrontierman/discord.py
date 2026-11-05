@@ -238,6 +238,7 @@ class BaseView:
         self.__cancel_callback: Optional[Callable[[BaseView], None]] = None
         self.__timeout_expiry: Optional[float] = None
         self.__timeout_task: Optional[asyncio.Task[None]] = None
+        self.__background_tasks: set[asyncio.Task[None]] = set()
         self.__snapshot: Optional[_ViewCacheSnapshot] = None
 
         try:
@@ -617,7 +618,9 @@ class BaseView:
             self.__cancel_callback = None
 
         self.__stopped.set_result(True)
-        asyncio.create_task(self.on_timeout(), name=f'discord-ui-view-timeout-{self.id}')
+        task = asyncio.create_task(self.on_timeout(), name=f'discord-ui-view-timeout-{self.id}')
+        self.__background_tasks.add(task)
+        task.add_done_callback(self.__background_tasks.discard)
 
     def _dispatch_item(self, item: Item[Any], interaction: Interaction[ClientT]) -> Optional[asyncio.Task[None]]:
         if self.__stopped is None or self.__stopped.done():
