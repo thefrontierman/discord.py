@@ -906,7 +906,7 @@ class HybridGroup(Group[CogT, P, T]):
 
         def decorator(func: CommandCallback[CogT, ContextT, P2, U]):
             kwargs.setdefault('parent', self)  # type: ignore # parent is not for users to set
-            result = hybrid_command(name=name, *args, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
+            result = hybrid_command(*args, name=name, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
             self.add_command(result)
             return result
 
@@ -930,7 +930,7 @@ class HybridGroup(Group[CogT, P, T]):
 
         def decorator(func: CommandCallback[CogT, ContextT, P2, U]):
             kwargs.setdefault('parent', self)  # type: ignore # parent is not for users to set
-            result = hybrid_group(name=name, *args, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
+            result = hybrid_group(*args, name=name, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
             self.add_command(result)
             return result
 
