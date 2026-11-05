@@ -2290,12 +2290,12 @@ class Client:
             if predicate:
                 data = filter(predicate, data)
 
-            count = 0
+            _count = 0
 
-            for count, raw_guild in enumerate(data, 1):
+            for _count, raw_guild in enumerate(data, 1):
                 yield Guild(state=self._connection, data=raw_guild)
 
-            if count < 200:
+            if _count < 200:
                 # There's no data left after this
                 break
 
