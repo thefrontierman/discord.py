@@ -26,7 +26,7 @@ from __future__ import annotations
 
 import inspect
 from operator import attrgetter
-from typing import TYPE_CHECKING, Any, Literal, Optional, OrderedDict, Union, Protocol
+from typing import TYPE_CHECKING, Any, Literal, OrderedDict, Union, Protocol
 
 from discord.utils import MISSING, maybe_coroutine
 
@@ -170,12 +170,12 @@ class Parameter(inspect.Parameter):
         return self.annotation
 
     @property
-    def description(self) -> Optional[str]:
+    def description(self) -> str | None:
         """Optional[:class:`str`]: The description of this parameter."""
         return self._description if self._description is not empty else None
 
     @property
-    def displayed_default(self) -> Optional[str]:
+    def displayed_default(self) -> str | None:
         """Optional[:class:`str`]: The displayed default in :class:`Command.signature`."""
         if self._displayed_default is not empty:
             return self._displayed_default
@@ -189,7 +189,7 @@ class Parameter(inspect.Parameter):
         return str(self.default)
 
     @property
-    def displayed_name(self) -> Optional[str]:
+    def displayed_name(self) -> str | None:
         """Optional[:class:`str`]: The name that is displayed to the user.
 
         .. versionadded:: 2.3
