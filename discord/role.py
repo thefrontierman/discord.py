@@ -33,8 +33,8 @@ from .utils import snowflake_time, _bytes_to_base64_data, _get_as_snowflake, MIS
 from .flags import RoleFlags
 
 __all__ = (
-    'RoleTags',
     'Role',
+    'RoleTags',
 )
 
 if TYPE_CHECKING:
