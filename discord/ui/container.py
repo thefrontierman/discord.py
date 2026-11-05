@@ -237,9 +237,7 @@ class Container(Item[V]):
         return True
 
     def to_components(self) -> List[Dict[str, Any]]:
-        components = []
-        for i in self._children:
-            components.append(i.to_component_dict())
+        components = [i.to_component_dict() for i in self._children]
         return components
 
     def to_component_dict(self) -> Dict[str, Any]:
