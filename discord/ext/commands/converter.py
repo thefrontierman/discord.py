@@ -1304,7 +1304,7 @@ _GenericAlias = type(List[T])  # type: ignore
 
 
 def is_generic_type(tp: Any, *, _GenericAlias: type = _GenericAlias) -> bool:
-    return isinstance(tp, type) and issubclass(tp, Generic) or isinstance(tp, _GenericAlias)
+    return (isinstance(tp, type) and issubclass(tp, Generic)) or isinstance(tp, _GenericAlias)
 
 
 CONVERTER_MAPPING: Dict[type, Any] = {
