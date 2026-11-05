@@ -128,7 +128,7 @@ class HTTPException(DiscordException):
         The Discord specific error code for the failure.
     """
 
-    def __init__(self, response: _ResponseType, message: Optional[Union[str, Dict[str, Any]]]):
+    def __init__(self, response: _ResponseType, message: str | Dict[str, Any] | None):
         self.response: _ResponseType = response
         self.status: int = response.status  # type: ignore # This attribute is filled by the library even if using requests
         self.code: int
