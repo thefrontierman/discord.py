@@ -1404,10 +1404,13 @@ def setup_logging(
     logger.addHandler(handler)
 
 
+_SHORTEN_WRAPPER = TextWrapper(width=100, max_lines=1, replace_whitespace=True, placeholder='…')
+
+
 def _shorten(
     input: str,
     *,
-    _wrapper: TextWrapper = TextWrapper(width=100, max_lines=1, replace_whitespace=True, placeholder='…'),
+    _wrapper: TextWrapper = _SHORTEN_WRAPPER,
 ) -> str:
     try:
         # split on the first double newline since arguments may appear after that
