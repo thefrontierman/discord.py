@@ -41,9 +41,9 @@ if TYPE_CHECKING:
     )
 
 __all__ = (
+    'Widget',
     'WidgetChannel',
     'WidgetMember',
-    'Widget',
 )
 
 
