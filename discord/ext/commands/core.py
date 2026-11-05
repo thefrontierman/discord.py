@@ -1249,8 +1249,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                         f'[{name}={param.displayed_default}]' if not greedy else f'[{name}={param.displayed_default}]...'
                     )
                     continue
-                else:
-                    result.append(f'[{name}]')
+                result.append(f'[{name}]')
 
             elif param.kind == param.VAR_POSITIONAL:
                 if self.require_var_positional:
