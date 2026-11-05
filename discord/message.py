@@ -3074,7 +3074,4 @@ class Message(PartialMessage, Hashable):
         if self.call is not None:
             return False
 
-        if self.activity is not None:
-            return False
-
-        return True
+        return self.activity is None
