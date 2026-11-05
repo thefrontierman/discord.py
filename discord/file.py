@@ -77,7 +77,7 @@ class File:
         .. versionadded:: 2.0
     """
 
-    __slots__ = ('fp', '_filename', 'spoiler', 'description', '_original_pos', '_owner', '_closer')
+    __slots__ = ('_closer', '_filename', '_original_pos', '_owner', 'description', 'fp', 'spoiler')
 
     def __init__(
         self,
