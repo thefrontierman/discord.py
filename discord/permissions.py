@@ -208,12 +208,10 @@ class Permissions(BaseFlags):
 
         self.value = permissions
         for key, kwvalue in kwargs.items():
-            try:
-                flag = self.VALID_FLAGS[key]
-            except KeyError:
+            flag = self.VALID_FLAGS.get(key)
+            if flag is None:
                 raise TypeError(f'{key!r} is not a valid permission name.') from None
-            else:
-                self._set_flag(flag, kwvalue)  # type: ignore # TypedDict annoyance where kwvalue is an object instead of bool
+            self._set_flag(flag, kwvalue)  # type: ignore # TypedDict annoyance where kwvalue is an object instead of bool
 
     def is_subset(self, other: Permissions) -> bool:
         """Returns ``True`` if self has the same or fewer permissions as other."""
