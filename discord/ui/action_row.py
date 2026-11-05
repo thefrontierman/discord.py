@@ -359,7 +359,7 @@ class ActionRow(Item[V]):
         custom_id: Optional[str] = None,
         disabled: bool = False,
         style: ButtonStyle = ButtonStyle.secondary,
-        emoji: Optional[Union[str, Emoji, PartialEmoji]] = None,
+        emoji: Optional[str | Emoji | PartialEmoji] = None,
         id: Optional[int] = None,
     ) -> Callable[[ItemCallbackType[S, Button[V]]], Button[V]]:
         """A decorator that attaches a button to the action row.
