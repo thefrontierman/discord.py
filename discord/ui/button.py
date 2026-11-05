@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 import copy
-from typing import Callable, Literal, Optional, TYPE_CHECKING, Tuple, TypeVar, Union
+from typing import Callable, Literal, Optional, TYPE_CHECKING, TypeVar, Union
 import os
 
 
@@ -96,7 +96,7 @@ class Button(Item[V]):
         .. versionadded:: 2.6
     """
 
-    __item_repr_attributes__: Tuple[str, ...] = (
+    __item_repr_attributes__: tuple[str, ...] = (
         'style',
         'url',
         'disabled',
