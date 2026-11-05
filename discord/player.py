@@ -44,6 +44,7 @@ from .errors import ClientException, FFmpegProcessError
 from .opus import Encoder as OpusEncoder, OPUS_SILENCE
 from .oggparse import OggStream
 from .utils import MISSING
+import contextlib
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -265,10 +266,8 @@ class FFmpegAudio(AudioSource):
 
         if still_running:
             _log.info('ffmpeg process %s has not terminated. Waiting to terminate...', pid)
-            try:
+            with contextlib.suppress(Exception):
                 proc.communicate()
-            except Exception:
-                pass
             _log.info(
                 'ffmpeg process %s should have terminated with a return code of %s.',
                 pid,
