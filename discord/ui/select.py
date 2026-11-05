@@ -172,7 +172,7 @@ def _handle_select_defaults(
                 raise ValueError(
                     'Object must have a type specified for the chosen select type. Please pass one using the `type`` kwarg.'
                 )
-            elif component_type is ComponentType.user_select:
+            if component_type is ComponentType.user_select:
                 object_type = User
             elif component_type is ComponentType.role_select:
                 object_type = Role
