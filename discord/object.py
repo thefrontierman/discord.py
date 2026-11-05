@@ -24,13 +24,14 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
+import builtins
+
 from .mixins import Hashable
 from .utils import snowflake_time, MISSING
 
 from typing import (
     SupportsInt,
     TYPE_CHECKING,
-    Type,
     Union,
 )
 
@@ -90,13 +91,13 @@ class Object(Hashable):
         .. versionadded:: 2.0
     """
 
-    def __init__(self, id: SupportsIntCast, *, type: Type[abc.Snowflake] = MISSING):
+    def __init__(self, id: SupportsIntCast, *, type: builtins.type[abc.Snowflake] = MISSING):
         try:
             id = int(id)
         except ValueError:
             raise TypeError(f'id parameter must be convertible to int not {id.__class__.__name__}') from None
         self.id: int = id
-        self.type: Type[abc.Snowflake] = type or self.__class__
+        self.type: builtins.type[abc.Snowflake] = type or self.__class__
 
     def __repr__(self) -> str:
         return f'<Object id={self.id!r} type={self.type!r}>'
