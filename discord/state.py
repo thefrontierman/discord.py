@@ -1173,7 +1173,7 @@ class ConnectionState(Generic[ClientT]):
         for emoji in before_emojis:
             self._emojis.pop(emoji.id, None)
         # guild won't be None here
-        guild.emojis = tuple(map(lambda d: self.store_emoji(guild, d), data['emojis']))
+        guild.emojis = tuple(self.store_emoji(guild, d) for d in data['emojis'])
         self.dispatch('guild_emojis_update', guild, before_emojis, guild.emojis)
 
     def parse_guild_stickers_update(self, data: gw.GuildStickersUpdateEvent) -> None:
@@ -1186,7 +1186,7 @@ class ConnectionState(Generic[ClientT]):
         for emoji in before_stickers:
             self._stickers.pop(emoji.id, None)
 
-        guild.stickers = tuple(map(lambda d: self.store_sticker(guild, d), data['stickers']))
+        guild.stickers = tuple(self.store_sticker(guild, d) for d in data['stickers'])
         self.dispatch('guild_stickers_update', guild, before_stickers, guild.stickers)
 
     def parse_guild_audit_log_entry_create(self, data: gw.GuildAuditLogEntryCreate) -> None:
