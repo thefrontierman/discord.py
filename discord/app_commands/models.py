@@ -496,14 +496,13 @@ class Choice(Generic[ChoiceT]):
     def _option_type(self) -> AppCommandOptionType:
         if isinstance(self.value, int):
             return AppCommandOptionType.integer
-        elif isinstance(self.value, float):
+        if isinstance(self.value, float):
             return AppCommandOptionType.number
-        elif isinstance(self.value, str):
+        if isinstance(self.value, str):
             return AppCommandOptionType.string
-        else:
-            raise TypeError(
-                f'invalid Choice value type given, expected int, str, or float but received {self.value.__class__.__name__}'
-            )
+        raise TypeError(
+            f'invalid Choice value type given, expected int, str, or float but received {self.value.__class__.__name__}'
+        )
 
     async def get_translated_payload(self, translator: Translator) -> Dict[str, Any]:
         base = self.to_dict()
@@ -1287,5 +1286,4 @@ def app_command_option_factory(
 ) -> Union[Argument, AppCommandGroup]:
     if is_app_command_argument_type(data['type']):
         return Argument(parent=parent, data=data, state=state)
-    else:
-        return AppCommandGroup(parent=parent, data=data, state=state)
+    return AppCommandGroup(parent=parent, data=data, state=state)
