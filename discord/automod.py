@@ -332,6 +332,7 @@ class AutoModTrigger:
                 'mention_total_limit': self.mention_limit,
                 'mention_raid_protection_enabled': self.mention_raid_protection,
             }
+        return None
 
 
 class AutoModRule:
