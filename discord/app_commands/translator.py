@@ -71,7 +71,7 @@ class TranslationContext(Generic[_L, _D]):
         The extraneous data that is being translated.
     """
 
-    __slots__ = ('location', 'data')
+    __slots__ = ('data', 'location')
 
     @overload
     def __init__(
