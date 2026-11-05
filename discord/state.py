@@ -551,7 +551,7 @@ class ConnectionState(Generic[ClientT]):
     def _update_poll_counts(self, message: Message, answer_id: int, added: bool, self_voted: bool = False) -> Optional[Poll]:
         poll = message.poll
         if not poll:
-            return
+            return None
         poll._handle_vote(answer_id, added, self_voted)
         return poll
 
@@ -1833,7 +1833,7 @@ class ConnectionState(Generic[ClientT]):
 
     def get_soundboard_sound(self, id: Optional[int]) -> Optional[SoundboardSound]:
         if id is None:
-            return
+            return None
 
         for guild in self.guilds:
             sound = guild._resolve_soundboard_sound(id)
