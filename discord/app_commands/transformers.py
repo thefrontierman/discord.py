@@ -857,7 +857,7 @@ def get_supported_annotation(
     supported_types: Set[Any] = {Role, Member, User}
     if not all(arg in supported_types for arg in args):
         raise TypeError(f'unsupported types given inside {annotation!r}')
-    if args == (User, Member) or args == (Member, User):
+    if args in {(User, Member), (Member, User)}:
         return (IdentityTransformer(AppCommandOptionType.user), default, True)
 
     return (IdentityTransformer(AppCommandOptionType.mentionable), default, True)
