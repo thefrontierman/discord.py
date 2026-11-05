@@ -27,7 +27,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import struct
-from typing import Any, Callable, List, Optional, TYPE_CHECKING, Tuple, Union
+from typing import Any, Callable, Optional, TYPE_CHECKING, Union
 
 from . import opus
 from .gateway import *
@@ -238,7 +238,7 @@ class VoiceClient(VoiceProtocol):
 
     warn_nacl: bool = not has_nacl
     warn_dave: bool = not has_dave
-    supported_modes: Tuple[SupportedModes, ...] = (
+    supported_modes: tuple[SupportedModes, ...] = (
         'aead_xchacha20_poly1305_rtpsize',
         'xsalsa20_poly1305_lite',
         'xsalsa20_poly1305_suffix',
@@ -276,7 +276,7 @@ class VoiceClient(VoiceProtocol):
         return self._connection.mode
 
     @property
-    def secret_key(self) -> List[int]:
+    def secret_key(self) -> list[int]:
         return self._connection.secret_key
 
     @property
