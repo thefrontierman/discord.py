@@ -491,6 +491,7 @@ class AutoShardedClient(Client):
         # keep reading the shard while others connect
         self.__shards[shard_id] = ret = Shard(ws, self, self.__queue.put_nowait)
         ret.launch()
+        return None
 
     async def launch_shards(self) -> None:
         if self.is_closed():
@@ -561,6 +562,7 @@ class AutoShardedClient(Client):
 
         self._closing_task = asyncio.create_task(_close())
         await self._closing_task
+        return None
 
     async def change_presence(
         self,
