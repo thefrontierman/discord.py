@@ -891,7 +891,7 @@ class AudioPlayer(threading.Thread):
 
     def send_silence(self, count: int = 5) -> None:
         try:
-            for n in range(count):
+            for _ in range(count):
                 self.client.send_audio_packet(OPUS_SILENCE, encode=False)
         except Exception:
             # Any possible error (probably a socket error) is so inconsequential it's not even worth logging
