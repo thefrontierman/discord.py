@@ -1177,10 +1177,9 @@ class Member(discord.abc.Messageable, _UserTag):
         if not atomic:
             new_roles = [Object(id=r.id) for r in self.roles[1:]]  # remove @everyone
             for role in roles:
-                try:
-                    new_roles.remove(Object(id=role.id))
-                except ValueError:
-                    pass
+                obj = Object(id=role.id)
+                if obj in new_roles:
+                    new_roles.remove(obj)
 
             await self.edit(roles=new_roles, reason=reason)
         else:
