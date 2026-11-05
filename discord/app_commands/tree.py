@@ -1189,9 +1189,8 @@ class CommandTree(Generic[ClientT]):
                         raise CommandNotFound(name, parents)
                     options = option.get('options', [])
                     break
-                else:
-                    searching = False
-                    break
+                searching = False
+                break
             else:
                 break
 
