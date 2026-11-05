@@ -81,12 +81,8 @@ class WelcomeChannel:
         _emoji_id = _get_as_snowflake(data, 'emoji_id')
         _emoji_name = data['emoji_name']
 
-        if _emoji_id:
-            # custom
-            emoji = get(guild.emojis, id=_emoji_id)
-        else:
-            # unicode or None
-            emoji = _emoji_name
+        # custom if emoji_id is set, otherwise unicode or None
+        emoji = get(guild.emojis, id=_emoji_id) if _emoji_id else _emoji_name
 
         return cls(channel=channel, description=description, emoji=emoji)  # type: ignore
 
