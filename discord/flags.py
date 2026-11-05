@@ -34,7 +34,6 @@ from typing import (
     Dict,
     Iterator,
     List,
-    Optional,
     Sequence,
     Tuple,
     Type,
@@ -109,7 +108,7 @@ BF = TypeVar('BF', bound='BaseFlags')
 class flag_value:
     def __init__(self, func: Callable[[Any], int]):
         self.flag: int = func(None)
-        self.__doc__: Optional[str] = func.__doc__
+        self.__doc__: str | None = func.__doc__
 
     @overload
     def __get__(self, instance: None, owner: Type[BF]) -> Self: ...
@@ -117,7 +116,7 @@ class flag_value:
     @overload
     def __get__(self, instance: BF, owner: Type[BF]) -> bool: ...
 
-    def __get__(self, instance: Optional[BF], owner: Type[BF]) -> Any:
+    def __get__(self, instance: BF | None, owner: Type[BF]) -> Any:
         if instance is None:
             return self
         return instance._has_flag(self.flag)
