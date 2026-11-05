@@ -132,7 +132,7 @@ class AppCommandContext:
     DM_CHANNEL: ClassVar[int] = 1
     PRIVATE_CHANNEL: ClassVar[int] = 2
 
-    __slots__ = ('_guild', '_dm_channel', '_private_channel')
+    __slots__ = ('_dm_channel', '_guild', '_private_channel')
 
     def __init__(
         self,
