@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Dict, Literal, Optional, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, TypeVar, Union
 
 from .item import Item
 from ..enums import ComponentType
@@ -123,7 +123,7 @@ class Thumbnail(Item[V]):
     def _is_v2(self) -> bool:
         return True
 
-    def to_component_dict(self) -> Dict[str, Any]:
+    def to_component_dict(self) -> dict[str, Any]:
         base = {
             'type': self.type.value,
             'spoiler': self.spoiler,
