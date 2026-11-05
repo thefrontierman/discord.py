@@ -632,10 +632,7 @@ class ScheduledEvent(Hashable):
         if limit is None:
             limit = self.user_count or None
 
-        if oldest_first is MISSING:
-            reverse = after is not None
-        else:
-            reverse = oldest_first
+        reverse = after is not None if oldest_first is MISSING else oldest_first
 
         predicate = None
 
