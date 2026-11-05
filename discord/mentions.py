@@ -82,7 +82,7 @@ class AllowedMentions:
         .. versionadded:: 1.6
     """
 
-    __slots__ = ('everyone', 'users', 'roles', 'replied_user')
+    __slots__ = ('everyone', 'replied_user', 'roles', 'users')
 
     def __init__(
         self,
