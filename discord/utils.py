@@ -926,7 +926,7 @@ def resolve_template(code: Union[Template, str]) -> str:
     return code
 
 
-_MARKDOWN_ESCAPE_SUBREGEX = '|'.join(r'\{0}(?=([\s\S]*((?<!\{0})\{0})))'.format(c) for c in ('*', '`', '_', '~', '|'))
+_MARKDOWN_ESCAPE_SUBREGEX = '|'.join(rf'\{c}(?=([\s\S]*((?<!\{c})\{c})))' for c in ('*', '`', '_', '~', '|'))
 
 _MARKDOWN_ESCAPE_COMMON = r'^>(?:>>)?\s|\[.+\]\(.+\)|^#{1,3}|^\s*-'
 
