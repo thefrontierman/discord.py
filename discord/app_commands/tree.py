@@ -486,6 +486,7 @@ class CommandTree(Generic[ClientT]):
             guild_id = None if guild is None else guild.id
             key = (command, guild_id, type.value)
             return self._context_menus.pop(key, None)
+        return None
 
     def clear_commands(self, *, guild: Optional[Snowflake], type: Optional[AppCommandType] = None) -> None:
         """Clears all application commands from the tree.
@@ -600,6 +601,7 @@ class CommandTree(Generic[ClientT]):
             guild_id = None if guild is None else guild.id
             key = (command, guild_id, type.value)
             return self._context_menus.get(key)
+        return None
 
     @overload
     def get_commands(
