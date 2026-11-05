@@ -139,7 +139,7 @@ class Modal(BaseView):
     ) -> None:
         if title is MISSING and getattr(self, 'title', MISSING) is MISSING:
             raise ValueError('Modal must have a title')
-        elif title is not MISSING:
+        if title is not MISSING:
             self.title = title
         self.custom_id: str = os.urandom(16).hex() if custom_id is MISSING else custom_id
 
