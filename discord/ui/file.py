@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal, Optional, TypeVar, Union
+from typing import TYPE_CHECKING, Literal, Optional, TypeVar
 
 
 from .item import Item
@@ -82,7 +82,7 @@ class File(Item[V]):
 
     def __init__(
         self,
-        media: Union[str, UnfurledMediaItem, SendableFile],
+        media: str | UnfurledMediaItem | SendableFile,
         *,
         spoiler: bool = MISSING,
         id: Optional[int] = None,
@@ -127,7 +127,7 @@ class File(Item[V]):
         return self._underlying.media
 
     @media.setter
-    def media(self, value: Union[str, SendableFile, UnfurledMediaItem]) -> None:
+    def media(self, value: str | SendableFile | UnfurledMediaItem) -> None:
         if isinstance(value, str):
             self._underlying.media = UnfurledMediaItem(value)
         elif isinstance(value, UnfurledMediaItem):
