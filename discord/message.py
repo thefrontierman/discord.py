@@ -2390,7 +2390,7 @@ class Message(PartialMessage, Hashable):
                 break
         else:
             # didn't find anything so just return
-            return
+            return None
 
         del self.reactions[index]
         return reaction
