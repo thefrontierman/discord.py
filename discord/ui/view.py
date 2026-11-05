@@ -877,11 +877,7 @@ class LayoutView(BaseView):
         self._total_children = max(0, self._total_children + value)
 
     def to_components(self):
-        components: List[Dict[str, Any]] = []
-        for i in self._children:
-            components.append(i.to_component_dict())
-
-        return components
+        return [i.to_component_dict() for i in self._children]
 
     def add_item(self, item: Item[Any]) -> Self:
         if self._total_children >= 40:
