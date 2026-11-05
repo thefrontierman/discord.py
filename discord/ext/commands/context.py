@@ -608,7 +608,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             return None
 
         try:
-            entity.qualified_name
+            _ = entity.qualified_name
         except AttributeError:
             # if we're here then it's not a cog, group, or command.
             return None
