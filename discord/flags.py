@@ -84,22 +84,22 @@ if TYPE_CHECKING:
 
 
 __all__ = (
-    'SystemChannelFlags',
+    'AppCommandContext',
+    'AppInstallationType',
+    'ApplicationFlags',
+    'AttachmentFlags',
+    'AutoModPresets',
+    'ChannelFlags',
+    'EmbedFlags',
+    'Intents',
+    'InviteFlags',
+    'MemberCacheFlags',
+    'MemberFlags',
     'MessageFlags',
     'PublicUserFlags',
-    'Intents',
-    'MemberCacheFlags',
-    'ApplicationFlags',
-    'ChannelFlags',
-    'AutoModPresets',
-    'MemberFlags',
-    'AppCommandContext',
-    'AttachmentFlags',
     'RoleFlags',
-    'AppInstallationType',
     'SKUFlags',
-    'EmbedFlags',
-    'InviteFlags',
+    'SystemChannelFlags',
 )
 
 BF = TypeVar('BF', bound='BaseFlags')
