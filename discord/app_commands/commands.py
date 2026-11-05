@@ -381,7 +381,7 @@ def _extract_parameters_from_callback(func: Callable[..., Any], globalns: Dict[s
         raise TypeError(f'callback {func.__qualname__!r} must have more than {required_params - 1} parameter(s)')
 
     iterator = iter(params.values())
-    for _ in range(0, required_params):
+    for _ in range(required_params):
         next(iterator)
 
     parameters: List[CommandParameter] = []
