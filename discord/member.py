@@ -187,7 +187,7 @@ def flatten_user(cls: T) -> T:
             # However I'm not sure how I feel about "functions" returning properties
             # It probably breaks something in Sphinx.
             # probably a member function by now
-            def generate_function(x):
+            def generate_function(x, value=value):
                 # We want sphinx to properly show coroutine functions as coroutines
                 if utils._iscoroutinefunction(value):
 
