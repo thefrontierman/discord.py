@@ -510,47 +510,47 @@ class AuditLogAction(Enum):
         v = self.value
         if v == -1:
             return 'all'
-        elif v < 10:
+        if v < 10:
             return 'guild'
-        elif v < 20:
+        if v < 20:
             return 'channel'
-        elif v < 30:
+        if v < 30:
             return 'user'
-        elif v < 40:
+        if v < 40:
             return 'role'
-        elif v < 50:
+        if v < 50:
             return 'invite'
-        elif v < 60:
+        if v < 60:
             return 'webhook'
-        elif v < 70:
+        if v < 70:
             return 'emoji'
-        elif v == 73:
+        if v == 73:
             return 'channel'
-        elif v < 80:
+        if v < 80:
             return 'message'
-        elif v < 83:
+        if v < 83:
             return 'integration'
-        elif v < 90:
+        if v < 90:
             return 'stage_instance'
-        elif v < 93:
+        if v < 93:
             return 'sticker'
-        elif v < 103:
+        if v < 103:
             return 'guild_scheduled_event'
-        elif v < 113:
+        if v < 113:
             return 'thread'
-        elif v < 122:
+        if v < 122:
             return 'integration_or_app_command'
-        elif 139 < v < 143:
+        if 139 < v < 143:
             return 'auto_moderation'
-        elif v < 147:
+        if v < 147:
             return 'user'
-        elif v < 152:
+        if v < 152:
             return 'creator_monetization'
-        elif v < 166:
+        if v < 166:
             return 'onboarding_prompt'
-        elif v < 168:
+        if v < 168:
             return 'onboarding'
-        elif v < 192:
+        if v < 192:
             return 'home_settings'
 
 
