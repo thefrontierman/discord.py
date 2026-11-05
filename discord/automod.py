@@ -163,10 +163,10 @@ class AutoModRuleAction:
         if data['type'] == AutoModRuleActionType.timeout.value:
             duration_seconds = data['metadata']['duration_seconds']
             return cls(duration=datetime.timedelta(seconds=duration_seconds))
-        elif data['type'] == AutoModRuleActionType.send_alert_message.value:
+        if data['type'] == AutoModRuleActionType.send_alert_message.value:
             channel_id = int(data['metadata']['channel_id'])
             return cls(channel_id=channel_id)
-        elif data['type'] == AutoModRuleActionType.block_message.value:
+        if data['type'] == AutoModRuleActionType.block_message.value:
             custom_message = data.get('metadata', {}).get('custom_message')
             return cls(type=AutoModRuleActionType.block_message, custom_message=custom_message)
 
@@ -298,25 +298,24 @@ class AutoModTrigger:
         type_ = try_enum(AutoModRuleTriggerType, type)
         if data is None:
             return cls(type=type_)
-        elif type_ in (AutoModRuleTriggerType.keyword, AutoModRuleTriggerType.member_profile):
+        if type_ in (AutoModRuleTriggerType.keyword, AutoModRuleTriggerType.member_profile):
             return cls(
                 type=type_,
                 keyword_filter=data.get('keyword_filter'),
                 regex_patterns=data.get('regex_patterns'),
                 allow_list=data.get('allow_list'),
             )
-        elif type_ is AutoModRuleTriggerType.keyword_preset:
+        if type_ is AutoModRuleTriggerType.keyword_preset:
             return cls(
                 type=type_, presets=AutoModPresets._from_value(data.get('presets', [])), allow_list=data.get('allow_list')
             )
-        elif type_ is AutoModRuleTriggerType.mention_spam:
+        if type_ is AutoModRuleTriggerType.mention_spam:
             return cls(
                 type=type_,
                 mention_limit=data.get('mention_total_limit'),
                 mention_raid_protection=data.get('mention_raid_protection_enabled'),
             )
-        else:
-            return cls(type=type_)
+        return cls(type=type_)
 
     def to_metadata_dict(self) -> Optional[Dict[str, Any]]:
         if self.type in (AutoModRuleTriggerType.keyword, AutoModRuleTriggerType.member_profile):
@@ -325,9 +324,9 @@ class AutoModTrigger:
                 'regex_patterns': self.regex_patterns,
                 'allow_list': self.allow_list,
             }
-        elif self.type is AutoModRuleTriggerType.keyword_preset:
+        if self.type is AutoModRuleTriggerType.keyword_preset:
             return {'presets': self.presets.to_array(), 'allow_list': self.allow_list}
-        elif self.type is AutoModRuleTriggerType.mention_spam:
+        if self.type is AutoModRuleTriggerType.mention_spam:
             return {
                 'mention_total_limit': self.mention_limit,
                 'mention_raid_protection_enabled': self.mention_raid_protection,
