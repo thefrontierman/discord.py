@@ -529,8 +529,8 @@ class SelectOption(BaseOption):
         Whether this option is selected by default.
     """
 
-    __slots__: Tuple[str, ...] = BaseOption.__slots__ + ('_emoji',)
-    __repr_info__ = BaseOption.__repr_info__ + ('emoji',)
+    __slots__: Tuple[str, ...] = (*BaseOption.__slots__, '_emoji')
+    __repr_info__ = (*BaseOption.__repr_info__, 'emoji')
 
     def __init__(
         self,
