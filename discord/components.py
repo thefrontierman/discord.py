@@ -114,7 +114,6 @@ __all__ = (
     'MediaGalleryItem',
     'MediaGalleryComponent',
     'FileComponent',
-    'SectionComponent',
     'Container',
     'TextDisplay',
     'SeparatorComponent',
