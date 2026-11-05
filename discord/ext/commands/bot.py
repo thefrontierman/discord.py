@@ -304,7 +304,7 @@ class BotBase(GroupMixin[None]):
 
         def decorator(func: CommandCallback[Any, ContextT, P, T]):
             kwargs.setdefault('parent', self)  # type: ignore # parent is not for the user to set
-            result = hybrid_command(name=name, *args, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
+            result = hybrid_command(*args, name=name, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
             self.add_command(result)
             return result
 
@@ -328,7 +328,7 @@ class BotBase(GroupMixin[None]):
 
         def decorator(func: CommandCallback[Any, ContextT, P, T]):
             kwargs.setdefault('parent', self)  # type: ignore # parent is not for the user to set
-            result = hybrid_group(name=name, *args, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
+            result = hybrid_group(*args, name=name, with_app_command=with_app_command, **kwargs)(func)  # type: ignore # name, with_app_command
             self.add_command(result)
             return result
 
