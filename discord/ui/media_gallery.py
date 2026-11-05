@@ -35,6 +35,7 @@ from ..components import (
     MediaGalleryComponent,
     UnfurledMediaItem,
 )
+import contextlib
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -231,10 +232,8 @@ class MediaGallery(Item[V]):
             The item to remove from the gallery.
         """
 
-        try:
+        with contextlib.suppress(ValueError):
             self._underlying.items.remove(item)
-        except ValueError:
-            pass
         return self
 
     def clear_items(self) -> Self:
