@@ -79,7 +79,6 @@ class ReconnectWebSocket(Exception):
 class WebSocketClosure(Exception):
     """An exception to make up for the fact that aiohttp doesn't signal closure."""
 
-    pass
 
 
 class EventListener(NamedTuple):
