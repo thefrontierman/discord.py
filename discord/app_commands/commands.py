@@ -1828,7 +1828,6 @@ class Group:
             The exception that was raised.
         """
 
-        pass
 
     def error(self, coro: ErrorFunc) -> ErrorFunc:
         """A decorator that registers a coroutine as a local error handler.
