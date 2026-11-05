@@ -4338,9 +4338,9 @@ class Guild(Hashable):
             webhooks = (Webhook.from_state(data=raw_webhook, state=self._state) for raw_webhook in data.get('webhooks', []))
             webhook_map = {webhook.id: webhook for webhook in webhooks}
 
-            count = 0
+            _count = 0
 
-            for count, raw_entry in enumerate(raw_entries, 1):
+            for _count, raw_entry in enumerate(raw_entries, 1):
                 # Weird Discord quirk
                 if raw_entry['action_type'] is None:
                     continue
@@ -4355,7 +4355,7 @@ class Guild(Hashable):
                     guild=self,
                 )
 
-            if count < 100:
+            if _count < 100:
                 # There's no data left after this
                 break
 
