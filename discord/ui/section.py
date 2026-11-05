@@ -67,8 +67,8 @@ class Section(Item[V]):
     __discord_ui_section__: ClassVar[bool] = True
 
     __slots__ = (
-        '_children',
         '_accessory',
+        '_children',
     )
 
     def __init__(
