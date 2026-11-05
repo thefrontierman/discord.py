@@ -32,11 +32,11 @@ from .utils import cached_slot_property, snowflake_time, get, MISSING, _get_as_s
 from .enums import StickerType, StickerFormatType, try_enum
 
 __all__ = (
-    'StickerPack',
-    'StickerItem',
-    'Sticker',
-    'StandardSticker',
     'GuildSticker',
+    'StandardSticker',
+    'Sticker',
+    'StickerItem',
+    'StickerPack',
 )
 
 if TYPE_CHECKING:
