@@ -262,11 +262,7 @@ class Section(Item[V]):
         return self
 
     def to_components(self) -> List[Dict[str, Any]]:
-        components = []
-
-        for component in self._children:
-            components.append(component.to_component_dict())
-        return components
+        return [component.to_component_dict() for component in self._children]
 
     def to_component_dict(self) -> Dict[str, Any]:
         data = {
