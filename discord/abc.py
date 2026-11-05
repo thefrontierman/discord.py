@@ -363,7 +363,7 @@ class PrivateChannel:
 
 
 class _Overwrites:
-    __slots__ = ('id', 'allow', 'deny', 'type')
+    __slots__ = ('allow', 'deny', 'id', 'type')
 
     ROLE = 0
     MEMBER = 1
