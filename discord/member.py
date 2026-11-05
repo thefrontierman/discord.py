@@ -415,8 +415,7 @@ class Member(discord.abc.Messageable, _UserTag):
         return self
 
     async def _get_channel(self) -> DMChannel:
-        ch = await self.create_dm()
-        return ch
+        return await self.create_dm()
 
     def _update(self, data: GuildMemberUpdateEvent) -> None:
         # the nickname change is optional,
