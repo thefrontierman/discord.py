@@ -225,10 +225,7 @@ def has_role(item: Union[int, str], /) -> Callable[[T], T]:
         if isinstance(interaction.user, User):
             raise NoPrivateMessage()
 
-        if isinstance(item, int):
-            role = interaction.user.get_role(item)
-        else:
-            role = utils_get(interaction.user.roles, name=item)
+        role = interaction.user.get_role(item) if isinstance(item, int) else utils_get(interaction.user.roles, name=item)
 
         if role is None:
             raise MissingRole(item)
