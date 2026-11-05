@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 
 from .asset import Asset
@@ -81,10 +81,10 @@ class Collectible:
         self._asset: str = data['asset']
         self.sku_id: int = int(data['sku_id'])
         self.label: str = data['label']
-        self.expires_at: Optional[datetime] = parse_time(data.get('expires_at'))
+        self.expires_at: datetime | None = parse_time(data.get('expires_at'))
 
         # nameplate
-        self.palette: Optional[NameplatePalette]
+        self.palette: NameplatePalette | None
         try:
             self.palette = try_enum(NameplatePalette, data['palette'])  # type: ignore
         except KeyError:
