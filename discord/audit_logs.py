@@ -712,18 +712,7 @@ class AuditLogEntry(Hashable):
         extra = data.get('options')
 
         # fmt: off
-        self.extra: Union[
-            _AuditLogProxyMemberPrune,
-            _AuditLogProxyMemberMoveOrMessageDelete,
-            _AuditLogProxyMemberDisconnect,
-            _AuditLogProxyPinAction,
-            _AuditLogProxyStageInstanceAction,
-            _AuditLogProxyMessageBulkDelete,
-            _AuditLogProxyAutoModAction,
-            _AuditLogProxyMemberKickOrMemberRoleUpdate,
-            Member, User, None, PartialIntegration,
-            Role, Object
-        ] = None
+        self.extra: Union[_AuditLogProxyMemberPrune, _AuditLogProxyMemberMoveOrMessageDelete, _AuditLogProxyMemberDisconnect, _AuditLogProxyPinAction, _AuditLogProxyStageInstanceAction, _AuditLogProxyMessageBulkDelete, _AuditLogProxyAutoModAction, _AuditLogProxyMemberKickOrMemberRoleUpdate, Member, User, PartialIntegration, Role, Object, None] = None
         # fmt: on
 
         if isinstance(self.action, enums.AuditLogAction) and extra:
