@@ -1270,10 +1270,9 @@ else:
             if min is None and max is None:
                 raise TypeError('Range must not be empty')
 
-            if min is not None and max is not None:
-                # At this point max and min are both not none
-                if type(min) != type(max):
-                    raise TypeError('Both min and max in Range must be the same type')
+            # At this point max and min are both not none
+            if min is not None and max is not None and type(min) != type(max):
+                raise TypeError('Both min and max in Range must be the same type')
 
             if annotation not in (int, float, str):
                 raise TypeError(f'expected int, float, or str as range type, received {annotation!r} instead')
