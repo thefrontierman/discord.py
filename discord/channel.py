@@ -43,6 +43,7 @@ from typing import (
     Union,
     overload,
 )
+import contextlib
 import datetime
 
 import discord.abc
@@ -2853,10 +2854,8 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
         payload = await self._state.http.edit_channel(
             self.id, reason=reason, available_tags=[tag.to_dict() for tag in prior]
         )
-        try:
+        with contextlib.suppress(KeyError, IndexError, ValueError):
             result.id = int(payload['available_tags'][-1]['id'])  # type: ignore
-        except (KeyError, IndexError, ValueError):
-            pass
 
         return result
 
