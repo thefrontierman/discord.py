@@ -106,6 +106,8 @@ if TYPE_CHECKING:
     EmojiInputType = Union[Emoji, PartialEmoji, str]
 
 
+_background_tasks: set[asyncio.Task[None]] = set()
+
 __all__ = (
     'Attachment',
     'Message',
@@ -1303,7 +1305,9 @@ class PartialMessage(Hashable):
                 except HTTPException:
                     pass
 
-            asyncio.create_task(delete(delay))
+            task = asyncio.create_task(delete(delay))
+            _background_tasks.add(task)
+            task.add_done_callback(_background_tasks.discard)
         else:
             await self._state.http.delete_message(self.channel.id, self.id)
 
