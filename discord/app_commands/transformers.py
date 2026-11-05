@@ -607,12 +607,11 @@ else:
             else:
                 cast = float
 
-            transformer = RangeTransformer(
+            return RangeTransformer(
                 opt_type,
                 min=cast(min) if min is not None else None,
                 max=cast(max) if max is not None else None,
             )
-            return transformer
 
 
 class MemberTransformer(Transformer[ClientT]):
