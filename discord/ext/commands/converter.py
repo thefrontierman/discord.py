@@ -224,7 +224,7 @@ class MemberConverter(IDConverter[discord.Member]):
             predicate = lambda m: m.name == username and m.discriminator == discriminator
         else:
             lookup = argument
-            predicate = lambda m: m.name == argument or m.global_name == argument or m.nick == argument
+            predicate = lambda m: argument in (m.name, m.global_name, m.nick)
 
         members = await guild.query_members(lookup, limit=100, cache=cache)
         return discord.utils.find(predicate, members)
@@ -336,7 +336,7 @@ class UserConverter(IDConverter[discord.User]):
         if discriminator == '0' or (len(discriminator) == 4 and discriminator.isdigit()):
             predicate = lambda u: u.name == username and u.discriminator == discriminator
         else:
-            predicate = lambda u: u.name == argument or u.global_name == argument
+            predicate = lambda u: argument in (u.name, u.global_name)
 
         result = discord.utils.find(predicate, state._users.values())
         if result is None:
