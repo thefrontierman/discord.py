@@ -39,9 +39,9 @@ import platform
 def show_version() -> None:
     entries = []
 
-    entries.append('- Python v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(sys.version_info))
+    entries.append(f'- Python v{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}-{sys.version_info.releaselevel}')
     version_info = discord.version_info
-    entries.append('- discord.py v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(version_info))
+    entries.append(f'- discord.py v{version_info.major}.{version_info.minor}.{version_info.micro}-{version_info.releaselevel}')
     if version_info.releaselevel != 'final':
         version = importlib.metadata.version('discord.py')
         if version:
@@ -57,7 +57,7 @@ def show_version() -> None:
         entries.append(f'- davey v{davey.__version__}')
 
     uname = platform.uname()
-    entries.append('- system info: {0.system} {0.release} {0.version}'.format(uname))
+    entries.append(f'- system info: {uname.system} {uname.release} {uname.version}')
     print('\n'.join(entries))
 
 
