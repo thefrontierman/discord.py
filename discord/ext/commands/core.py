@@ -1532,7 +1532,7 @@ class GroupMixin(Generic[CogT]):
 
         def decorator(func):
             kwargs.setdefault('parent', self)  # type: ignore # the parent kwarg is not for users to set.
-            result = command(name=name, cls=cls, *args, **kwargs)(func)
+            result = command(*args, name=name, cls=cls, **kwargs)(func)
             self.add_command(result)
             return result
 
@@ -1573,7 +1573,7 @@ class GroupMixin(Generic[CogT]):
 
         def decorator(func):
             kwargs.setdefault('parent', self)  # type: ignore # the parent kwarg is not for users to set.
-            result = group(name=name, cls=cls, *args, **kwargs)(func)
+            result = group(*args, name=name, cls=cls, **kwargs)(func)
             self.add_command(result)
             return result
 
