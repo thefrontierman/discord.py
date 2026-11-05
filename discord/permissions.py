@@ -28,8 +28,8 @@ from typing import Callable, Any, ClassVar, Dict, Iterator, Set, TYPE_CHECKING, 
 from .flags import BaseFlags, flag_value, fill_with_flags, alias_flag_value
 
 __all__ = (
-    'Permissions',
     'PermissionOverwrite',
+    'Permissions',
 )
 
 if TYPE_CHECKING:
