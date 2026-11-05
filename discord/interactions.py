@@ -57,6 +57,8 @@ __all__ = (
     'InteractionCallbackActivityInstance',
 )
 
+_background_tasks: set[asyncio.Task[None]] = set()
+
 if TYPE_CHECKING:
     from .types.interactions import (
         Interaction as InteractionPayload,
@@ -1112,7 +1114,9 @@ class InteractionResponse(Generic[ClientT]):
                 except HTTPException:
                     pass
 
-            asyncio.create_task(inner_call())
+            task = asyncio.create_task(inner_call())
+            _background_tasks.add(task)
+            task.add_done_callback(_background_tasks.discard)
 
         return response
 
@@ -1258,7 +1262,9 @@ class InteractionResponse(Generic[ClientT]):
                 except HTTPException:
                     pass
 
-            asyncio.create_task(inner_call())
+            task = asyncio.create_task(inner_call())
+            _background_tasks.add(task)
+            task.add_done_callback(_background_tasks.discard)
 
         return response
 
@@ -1648,6 +1654,8 @@ class InteractionMessage(Message):
                 except HTTPException:
                     pass
 
-            asyncio.create_task(inner_call())
+            task = asyncio.create_task(inner_call())
+            _background_tasks.add(task)
+            task.add_done_callback(_background_tasks.discard)
         else:
             await self._state._interaction.delete_original_response()
