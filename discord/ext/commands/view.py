@@ -24,8 +24,6 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Optional
-
 from .errors import UnexpectedQuoteError, InvalidEndOfQuotedStringError, ExpectedClosingQuoteError
 
 # map from opening quotes to closing quotes
@@ -59,7 +57,7 @@ class StringView:
         self.previous = 0
 
     @property
-    def current(self) -> Optional[str]:
+    def current(self) -> str | None:
         return None if self.eof else self.buffer[self.index]
 
     @property
@@ -104,7 +102,7 @@ class StringView:
         self.index += n
         return result
 
-    def get(self) -> Optional[str]:
+    def get(self) -> str | None:
         try:
             result = self.buffer[self.index + 1]
         except IndexError:
@@ -129,7 +127,7 @@ class StringView:
         self.index += pos
         return result
 
-    def get_quoted_word(self) -> Optional[str]:
+    def get_quoted_word(self) -> str | None:
         current = self.current
         if current is None:
             return None
