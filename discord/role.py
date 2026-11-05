@@ -73,12 +73,12 @@ class RoleTags:
     """
 
     __slots__ = (
+        '_available_for_purchase',
+        '_guild_connections',
+        '_premium_subscriber',
         'bot_id',
         'integration_id',
-        '_premium_subscriber',
-        '_available_for_purchase',
         'subscription_listing_id',
-        '_guild_connections',
     )
 
     def __init__(self, data: RoleTagPayload):
@@ -208,22 +208,22 @@ class Role(Hashable):
     """
 
     __slots__ = (
-        'id',
-        'name',
-        '_permissions',
         '_colour',
-        'position',
+        '_flags',
         '_icon',
-        'unicode_emoji',
+        '_permissions',
+        '_secondary_colour',
+        '_state',
+        '_tertiary_colour',
+        'guild',
+        'hoist',
+        'id',
         'managed',
         'mentionable',
-        'hoist',
-        'guild',
+        'name',
+        'position',
         'tags',
-        '_flags',
-        '_state',
-        '_secondary_colour',
-        '_tertiary_colour',
+        'unicode_emoji',
     )
 
     def __init__(self, *, guild: Guild, state: ConnectionState, data: RolePayload):
