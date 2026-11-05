@@ -911,13 +911,7 @@ class CommandTree(Generic[ClientT]):
             if not _iscoroutinefunction(func):
                 raise TypeError('command function must be a coroutine function')
 
-            if description is MISSING:
-                if func.__doc__ is None:
-                    desc = '…'
-                else:
-                    desc = _shorten(func.__doc__)
-            else:
-                desc = description
+            desc = ('…' if func.__doc__ is None else _shorten(func.__doc__)) if description is MISSING else description
 
             command = Command(
                 name=name if name is not MISSING else func.__name__,
