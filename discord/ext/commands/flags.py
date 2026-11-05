@@ -454,17 +454,16 @@ async def convert_flag(ctx: Context[BotT], argument: str, flag: Flag, annotation
         if origin is tuple:
             if annotation.__args__[-1] is Ellipsis:
                 return await tuple_convert_all(ctx, argument, flag, annotation.__args__[0])
-            else:
-                return await tuple_convert_flag(ctx, argument, flag, annotation.__args__)
-        elif origin is list:
+            return await tuple_convert_flag(ctx, argument, flag, annotation.__args__)
+        if origin is list:
             # typing.List[x]
             annotation = annotation.__args__[0]
             return await convert_flag(ctx, argument, flag, annotation)
-        elif origin is Union and type(None) in annotation.__args__:
+        if origin is Union and type(None) in annotation.__args__:
             # typing.Optional[x]
             annotation = Union[tuple(arg for arg in annotation.__args__ if arg is not type(None))]
             return await run_converters(ctx, annotation, argument, param)
-        elif origin is dict:
+        if origin is dict:
             # typing.Dict[K, V] -> typing.Tuple[K, V]
             return await tuple_convert_flag(ctx, argument, flag, annotation.__args__)
 
