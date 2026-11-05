@@ -23,7 +23,7 @@ DEALINGS IN THE SOFTWARE.
 """
 
 from __future__ import annotations
-from typing import Any, Dict, Optional, Tuple, Union
+from typing import Any, Dict, Optional, Tuple
 
 import os
 import io
@@ -81,7 +81,7 @@ class File:
 
     def __init__(
         self,
-        fp: Union[str, bytes, os.PathLike[Any], io.BufferedIOBase],
+        fp: str | bytes | os.PathLike[Any] | io.BufferedIOBase,
         filename: Optional[str] = None,
         *,
         spoiler: bool = MISSING,
@@ -144,7 +144,7 @@ class File:
         """
         return f'attachment://{self.filename}'
 
-    def reset(self, *, seek: Union[int, bool] = True) -> None:
+    def reset(self, *, seek: int | bool = True) -> None:
         # The `seek` parameter is needed because
         # the retry-loop is iterated over multiple times
         # starting from 0, as an implementation quirk
