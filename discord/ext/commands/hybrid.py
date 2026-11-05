@@ -490,10 +490,7 @@ class HybridAppCommand(discord.app_commands.Command[CogT, P, T]):
         if self.checks and not await async_all(f(interaction) for f in self.checks):  # type: ignore
             return False
 
-        if self.wrapped.checks and not await async_all(f(ctx) for f in self.wrapped.checks):  # type: ignore
-            return False
-
-        return True
+        return not (self.wrapped.checks and not await async_all(f(ctx) for f in self.wrapped.checks))  # type: ignore
 
     async def _invoke_with_namespace(self, interaction: discord.Interaction, namespace: app_commands.Namespace) -> Any:
         # Wrap the interaction into a Context
