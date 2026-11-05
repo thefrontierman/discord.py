@@ -659,10 +659,7 @@ class RangeError(BadArgument):
         if label and isinstance(value, str):
             label += ' characters'
             count = len(value)
-            if count == 1:
-                value = '1 character'
-            else:
-                value = f'{count} characters'
+            value = '1 character' if count == 1 else f'{count} characters'
 
         super().__init__(f'value must be {label} but received {value}')
 
