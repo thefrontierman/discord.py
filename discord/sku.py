@@ -70,13 +70,13 @@ class SKU:
     """
 
     __slots__ = (
+        '_flags',
         '_state',
-        'id',
-        'type',
         'application_id',
+        'id',
         'name',
         'slug',
-        '_flags',
+        'type',
     )
 
     def __init__(self, *, state: ConnectionState, data: SKUPayload):
@@ -276,16 +276,16 @@ class Entitlement:
 
     __slots__ = (
         '_state',
-        'id',
-        'sku_id',
         'application_id',
-        'user_id',
-        'type',
+        'consumed',
         'deleted',
-        'starts_at',
         'ends_at',
         'guild_id',
-        'consumed',
+        'id',
+        'sku_id',
+        'starts_at',
+        'type',
+        'user_id',
     )
 
     def __init__(self, state: ConnectionState, data: EntitlementPayload):
