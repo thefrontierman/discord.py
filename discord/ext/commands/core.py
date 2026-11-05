@@ -161,7 +161,7 @@ def get_signature_parameters(
         raise TypeError(f'Command signature requires at least {required_params - 1} parameter(s)')
 
     iterator = iter(signature.parameters.items())
-    for _ in range(0, required_params):
+    for _ in range(required_params):
         next(iterator)
 
     for name, parameter in iterator:
