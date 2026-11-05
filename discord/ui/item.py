@@ -56,7 +56,7 @@ ContainedItemCallbackType = Callable[[C, Interaction[Any], I], Coroutine[Any, An
 
 
 class _ItemCallback:
-    __slots__ = ('parent', 'callback', 'item')
+    __slots__ = ('callback', 'item', 'parent')
 
     def __init__(self, callback: ContainedItemCallbackType[Any, Any], parent: Any, item: Item[Any]) -> None:
         self.callback: ItemCallbackType[Any, Any] = callback
