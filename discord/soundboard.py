@@ -35,7 +35,7 @@ from .asset import Asset, AssetMixin
 
 if TYPE_CHECKING:
     import datetime
-    from typing import Dict, Any
+    from typing import Any
 
     from .types.soundboard import (
         BaseSoundboardSound as BaseSoundboardSoundPayload,
@@ -272,7 +272,7 @@ class SoundboardSound(BaseSoundboardSound):
             The newly updated soundboard sound.
         """
 
-        payload: Dict[str, Any] = {}
+        payload: dict[str, Any] = {}
 
         if name is not MISSING:
             payload['name'] = name
