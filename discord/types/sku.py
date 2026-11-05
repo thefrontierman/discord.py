@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TypedDict, Optional, Literal
+from typing import TypedDict, Literal
 from typing_extensions import NotRequired
 
 
@@ -41,7 +41,7 @@ class Entitlement(TypedDict):
     id: str
     sku_id: str
     application_id: str
-    user_id: Optional[str]
+    user_id: str | None
     type: int
     deleted: bool
     starts_at: NotRequired[str]
