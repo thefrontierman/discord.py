@@ -34,12 +34,12 @@ from .partial_emoji import PartialEmoji
 from .utils import _get_as_snowflake
 
 __all__ = (
-    'BaseActivity',
     'Activity',
-    'Streaming',
+    'BaseActivity',
+    'CustomActivity',
     'Game',
     'Spotify',
-    'CustomActivity',
+    'Streaming',
 )
 
 """If curious, this is the current schema for an activity.
