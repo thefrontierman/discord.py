@@ -619,14 +619,13 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             if is_cog(entity):
                 injected = wrap_callback(cmd.send_cog_help)
                 return await injected(entity)
-            elif isinstance(entity, Group):
+            if isinstance(entity, Group):
                 injected = wrap_callback(cmd.send_group_help)
                 return await injected(entity)
-            elif isinstance(entity, Command):
+            if isinstance(entity, Command):
                 injected = wrap_callback(cmd.send_command_help)
                 return await injected(entity)
-            else:
-                return None
+            return None
         except CommandError as e:
             await cmd.on_help_command_error(self, e)
 
@@ -778,8 +777,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         """
         if self.interaction is None:
             return await self.send(content, reference=self.message, **kwargs)
-        else:
-            return await self.send(content, **kwargs)
+        return await self.send(content, **kwargs)
 
     def typing(self, *, ephemeral: bool = False) -> Union[Typing, DeferTyping[BotT]]:
         """Returns an asynchronous context manager that allows you to send a typing indicator to
