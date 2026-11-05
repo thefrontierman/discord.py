@@ -191,6 +191,7 @@ class StringView:
                 return ''.join(result)
 
             result.append(current)
+        return None
 
     def __repr__(self) -> str:
         return f'<StringView pos: {self.index} prev: {self.previous} end: {self.end} eof: {self.eof}>'
