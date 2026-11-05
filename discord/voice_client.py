@@ -66,8 +66,8 @@ except ImportError:
     has_nacl = False
 
 __all__ = (
-    'VoiceProtocol',
     'VoiceClient',
+    'VoiceProtocol',
 )
 
 
