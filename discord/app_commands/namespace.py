@@ -160,15 +160,12 @@ class Namespace:
             elif opt_type in (6, 7, 8, 9, 11):
                 # Remaining ones should be snowflake based ones with resolved data
                 snowflake: str = option['value']  # type: ignore # Key is there
-                if opt_type == 9:  # Mentionable
-                    # Mentionable is User | Role, these do not cause any conflict
-                    key = ResolveKey.any_with(snowflake)
-                else:
-                    # The remaining keys can conflict, for example, a role and a channel
-                    # could end up with the same ID in very old guilds since they used to default
-                    # to sharing the guild ID. Old general channels no longer exist, but some old
-                    # servers will still have them so this needs to be handled.
-                    key = ResolveKey(id=snowflake, type=opt_type)
+                # Mentionable is User | Role, these do not cause any conflict
+                # The remaining keys can conflict, for example, a role and a channel
+                # could end up with the same ID in very old guilds since they used to default
+                # to sharing the guild ID. Old general channels no longer exist, but some old
+                # servers will still have them so this needs to be handled.
+                key = ResolveKey.any_with(snowflake) if opt_type == 9 else ResolveKey(id=snowflake, type=opt_type)
 
                 value = completed.get(key) or Object(id=int(snowflake))
                 self.__dict__[name] = value
