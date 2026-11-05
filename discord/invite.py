@@ -35,9 +35,9 @@ from .scheduled_event import ScheduledEvent
 from .flags import InviteFlags
 
 __all__ = (
+    'Invite',
     'PartialInviteChannel',
     'PartialInviteGuild',
-    'Invite',
 )
 
 if TYPE_CHECKING:
