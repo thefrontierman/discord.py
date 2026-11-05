@@ -156,9 +156,8 @@ class _BaseApplicationCommand(TypedDict):
 class _ChatInputApplicationCommand(_BaseApplicationCommand, total=False):
     description: Required[str]
     type: Literal[1]
-    options: Union[
-        List[_ValueApplicationCommandOption],
-        List[Union[_SubCommandCommandOption, _SubCommandGroupCommandOption]],
+    options: List[_ValueApplicationCommandOption] | List[
+        _SubCommandCommandOption | _SubCommandGroupCommandOption
     ]
 
 
