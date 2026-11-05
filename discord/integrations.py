@@ -31,12 +31,12 @@ from .user import User
 from .enums import try_enum, ExpireBehaviour
 
 __all__ = (
+    'BotIntegration',
+    'Integration',
     'IntegrationAccount',
     'IntegrationApplication',
-    'Integration',
-    'StreamIntegration',
-    'BotIntegration',
     'PartialIntegration',
+    'StreamIntegration',
 )
 
 if TYPE_CHECKING:
