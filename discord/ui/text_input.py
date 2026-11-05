@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 import os
-from typing import TYPE_CHECKING, Literal, Optional, Tuple, TypeVar
+from typing import TYPE_CHECKING, Literal, Optional, TypeVar
 
 from ..components import TextInput as TextInputComponent
 from ..enums import ComponentType, TextStyle
@@ -106,7 +106,7 @@ class TextInput(Item[V]):
         .. versionadded:: 2.6
     """
 
-    __item_repr_attributes__: Tuple[str, ...] = (
+    __item_repr_attributes__: tuple[str, ...] = (
         'label',
         'placeholder',
         'required',
