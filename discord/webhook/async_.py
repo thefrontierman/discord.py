@@ -978,9 +978,14 @@ class WebhookMessage(Message):
                 except HTTPException:
                     pass
 
-            asyncio.create_task(inner_call())
+            task = asyncio.create_task(inner_call())
+            _background_tasks.add(task)
+            task.add_done_callback(_background_tasks.discard)
         else:
             await self._state._webhook.delete_message(self.id, thread=self._state._thread)
+
+
+_background_tasks: set[asyncio.Task[None]] = set()
 
 
 class BaseWebhook(Hashable):
