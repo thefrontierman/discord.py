@@ -489,9 +489,8 @@ class VoiceConnectionState:
                     await self.disconnect(cleanup=False)
                     await asyncio.sleep(wait)
                     continue
-                else:
-                    await self.disconnect()
-                    raise
+                await self.disconnect()
+                raise
 
     async def _connect(self, reconnect: bool, timeout: float, self_deaf: bool, self_mute: bool, resume: bool) -> None:
         _log.info('Connecting to voice...')
