@@ -1255,9 +1255,7 @@ class DefaultHelpCommand(HelpCommand):
 
     def get_destination(self) -> discord.abc.Messageable:
         ctx = self.context
-        if self.dm_help is True:
-            return ctx.author
-        elif self.dm_help is None and len(self.paginator) > self.dm_help_threshold:
+        if self.dm_help is True or self.dm_help is None and len(self.paginator) > self.dm_help_threshold:
             return ctx.author
         else:
             return ctx.channel
@@ -1520,9 +1518,7 @@ class MinimalHelpCommand(HelpCommand):
 
     def get_destination(self) -> discord.abc.Messageable:
         ctx = self.context
-        if self.dm_help is True:
-            return ctx.author
-        elif self.dm_help is None and len(self.paginator) > self.dm_help_threshold:
+        if self.dm_help is True or self.dm_help is None and len(self.paginator) > self.dm_help_threshold:
             return ctx.author
         else:
             return ctx.channel
