@@ -112,11 +112,12 @@ class Modal(BaseView):
         if title is not MISSING:
             cls.title = title
 
-        children = {}
-        for base in reversed(cls.__mro__):
-            for name, member in base.__dict__.items():
-                if isinstance(member, Item):
-                    children[name] = member
+        children = {
+            name: member
+            for base in reversed(cls.__mro__)
+            for name, member in base.__dict__.items()
+            if isinstance(member, Item)
+        }
 
         cls.__modal_children_items__ = children
 
