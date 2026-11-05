@@ -883,7 +883,7 @@ class BotBase(GroupMixin[None]):
 
         cog = self.__cogs.pop(name, None)
         if cog is None:
-            return
+            return None
 
         help_command = self._help_command
         if help_command and help_command.cog is cog:
