@@ -168,12 +168,8 @@ class Component:
     def _raw_construct(cls, **kwargs) -> Self:
         self = cls.__new__(cls)
         for slot in get_slots(cls):
-            try:
-                value = kwargs[slot]
-            except KeyError:
-                pass
-            else:
-                setattr(self, slot, value)
+            if slot in kwargs:
+                setattr(self, slot, kwargs[slot])
         return self
 
     def to_dict(self) -> ComponentPayload:
