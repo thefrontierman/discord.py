@@ -102,16 +102,16 @@ class Emoji(_EmojiTag, AssetMixin):
     """
 
     __slots__: Tuple[str, ...] = (
-        'require_colons',
-        'animated',
-        'managed',
-        'id',
-        'name',
         '_roles',
-        'guild_id',
         '_state',
-        'user',
+        'animated',
         'available',
+        'guild_id',
+        'id',
+        'managed',
+        'name',
+        'require_colons',
+        'user',
     )
 
     def __init__(self, *, guild: Snowflake, state: ConnectionState, data: EmojiPayload) -> None:
