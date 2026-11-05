@@ -288,7 +288,6 @@ class VoiceConnectionState:
         elif self.dave_session:
             self.dave_session.reset()
             self.dave_session.set_passthrough_mode(True, 10)
-        pass
 
     async def _recover_from_invalid_commit(self, transition_id: int) -> None:
         payload = {
