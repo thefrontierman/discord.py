@@ -35,6 +35,7 @@ from .errors import ClientException
 from .flags import ChannelFlags
 from .permissions import Permissions
 from .utils import MISSING, parse_time, _get_as_snowflake, _unique
+import contextlib
 
 __all__ = (
     'Thread',
@@ -213,19 +214,15 @@ class Thread(Messageable, Hashable):
         self._created_at: Optional[datetime] = parse_time(data.get('create_timestamp'))
 
     def _update(self, data: ThreadPayload) -> None:
-        try:
+        with contextlib.suppress(KeyError):
             self.name = data['name']
-        except KeyError:
-            pass
 
         self.slowmode_delay = data.get('rate_limit_per_user', 0)
         self._flags: int = data.get('flags', 0)
         self._applied_tags: array.array[int] = array.array('Q', map(int, data.get('applied_tags', [])))
 
-        try:
+        with contextlib.suppress(KeyError):
             self._unroll_metadata(data['thread_metadata'])
-        except KeyError:
-            pass
 
     @property
     def type(self) -> ThreadChannelType:
