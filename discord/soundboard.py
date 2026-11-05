@@ -145,7 +145,7 @@ class SoundboardDefaultSound(BaseSoundboardSound):
             ('volume', self.volume),
             ('emoji', self.emoji),
         ]
-        inner = ' '.join('%s=%r' % t for t in attrs)
+        inner = ' '.join(f'{k}={v!r}' for k, v in attrs)
         return f'<{self.__class__.__name__} {inner}>'
 
 
@@ -202,7 +202,7 @@ class SoundboardSound(BaseSoundboardSound):
             ('emoji', self.emoji),
             ('user', self.user),
         ]
-        inner = ' '.join('%s=%r' % t for t in attrs)
+        inner = ' '.join(f'{k}={v!r}' for k, v in attrs)
         return f'<{self.__class__.__name__} {inner}>'
 
     def _update(self, data: SoundboardSoundPayload):
