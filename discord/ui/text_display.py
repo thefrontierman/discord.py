@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal, Optional, TypeVar
+from typing import TYPE_CHECKING, Literal, TypeVar
 
 from .item import Item
 from ..components import TextDisplay as TextDisplayComponent
@@ -58,7 +58,7 @@ class TextDisplay(Item[V]):
 
     __slots__ = ('content',)
 
-    def __init__(self, content: str, *, id: Optional[int] = None) -> None:
+    def __init__(self, content: str, *, id: int | None = None) -> None:
         super().__init__()
         self.content: str = content
         self.id = id
