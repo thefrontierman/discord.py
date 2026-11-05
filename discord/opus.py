@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Tuple, TypedDict, Any, TYPE_CHECKING, Callable, TypeVar, Literal, Optional, overload
+from typing import List, Tuple, TypedDict, Any, TYPE_CHECKING, Callable, TypeVar, Literal, overload
 
 import array
 import ctypes
@@ -481,7 +481,7 @@ class Decoder(_OpusStruct):
     @overload
     def decode(self, data: Literal[None], *, fec: Literal[False]) -> bytes: ...
 
-    def decode(self, data: Optional[bytes], *, fec: bool = False) -> bytes:
+    def decode(self, data: bytes | None, *, fec: bool = False) -> bytes:
         if data is None and fec:
             raise TypeError('Invalid arguments: FEC cannot be used with null data')
 
