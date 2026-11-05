@@ -253,12 +253,8 @@ class Embed:
             pass
 
         for attr in ('thumbnail', 'video', 'provider', 'author', 'fields', 'image', 'footer'):
-            try:
-                value = data[attr]
-            except KeyError:
-                continue
-            else:
-                setattr(self, '_' + attr, value)
+            if attr in data:
+                setattr(self, '_' + attr, data[attr])
 
         return self
 
