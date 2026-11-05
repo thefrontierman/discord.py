@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional, TypedDict
+from typing import List, Literal, TypedDict
 from typing_extensions import NotRequired
 
 from .snowflake import Snowflake
@@ -64,8 +64,8 @@ class Thread(TypedDict):
     rate_limit_per_user: int
     thread_metadata: ThreadMetadata
     member: NotRequired[ThreadMember]
-    last_message_id: NotRequired[Optional[Snowflake]]
-    last_pin_timestamp: NotRequired[Optional[Snowflake]]
+    last_message_id: NotRequired[Snowflake | None]
+    last_pin_timestamp: NotRequired[Snowflake | None]
     newly_created: NotRequired[bool]
     flags: NotRequired[int]
     applied_tags: NotRequired[List[Snowflake]]
