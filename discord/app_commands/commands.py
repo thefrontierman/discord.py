@@ -301,7 +301,7 @@ def _populate_renames(params: Dict[str, CommandParameter], renames: Dict[str, Un
 
     # original name to renamed name
 
-    for name in params.keys():
+    for name in params:
         new_name = renames.pop(name, MISSING)
 
         if new_name is MISSING:
