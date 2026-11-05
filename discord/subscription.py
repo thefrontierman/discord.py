@@ -69,15 +69,15 @@ class Subscription(Hashable):
 
     __slots__ = (
         '_state',
-        'id',
-        'user_id',
-        'sku_ids',
-        'entitlement_ids',
-        'current_period_start',
-        'current_period_end',
-        'status',
         'canceled_at',
+        'current_period_end',
+        'current_period_start',
+        'entitlement_ids',
+        'id',
         'renewal_sku_ids',
+        'sku_ids',
+        'status',
+        'user_id',
     )
 
     def __init__(self, *, state: ConnectionState, data: SubscriptionPayload):
