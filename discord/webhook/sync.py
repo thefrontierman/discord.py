@@ -47,6 +47,7 @@ from ..http import Route, handle_message_parameters
 from ..channel import PartialMessageable, ForumTag
 
 from .async_ import BaseWebhook, _WebhookState
+import contextlib
 
 __all__ = (
     'SyncWebhook',
@@ -77,10 +78,8 @@ if TYPE_CHECKING:
 
     BE = TypeVar('BE', bound=BaseException)
 
-    try:
+    with contextlib.suppress(ModuleNotFoundError):
         from requests import Session, Response
-    except ModuleNotFoundError:
-        pass
 
 MISSING: Any = utils.MISSING
 
