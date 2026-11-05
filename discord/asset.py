@@ -26,7 +26,7 @@ from __future__ import annotations
 
 import io
 import os
-from typing import Any, Literal, Optional, TYPE_CHECKING, Tuple, Union
+from typing import Any, Literal, Optional, TYPE_CHECKING, Union
 from .errors import DiscordException
 from . import utils
 from .file import File
@@ -200,7 +200,7 @@ class Asset(AssetMixin):
             Returns the hash of the asset.
     """
 
-    __slots__: Tuple[str, ...] = (
+    __slots__: tuple[str, ...] = (
         '_state',
         '_url',
         '_animated',
