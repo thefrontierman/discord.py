@@ -998,16 +998,12 @@ class HelpCommand:
             return await self.send_error_message(string)
 
         for key in keys[1:]:
-            try:
-                found = cmd.all_commands.get(key)  # type: ignore
-            except AttributeError:
+            all_commands = getattr(cmd, 'all_commands', None)
+            found = all_commands.get(key) if all_commands is not None else None
+            if found is None:
                 string = await maybe_coro(self.subcommand_not_found, cmd, self.remove_mentions(key))
                 return await self.send_error_message(string)
-            else:
-                if found is None:
-                    string = await maybe_coro(self.subcommand_not_found, cmd, self.remove_mentions(key))
-                    return await self.send_error_message(string)
-                cmd = found
+            cmd = found
 
         if isinstance(cmd, Group):
             return await self.send_group_help(cmd)
