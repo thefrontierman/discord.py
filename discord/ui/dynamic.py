@@ -89,7 +89,7 @@ class DynamicItem(Generic[BaseT], Item[Union[View, LayoutView]]):
 
     __discord_ui_compiled_template__: ClassVar[re.Pattern[str]]
 
-    def __init_subclass__(cls, *, template: Union[str, re.Pattern[str]]) -> None:
+    def __init_subclass__(cls, *, template: str | re.Pattern[str]) -> None:
         super().__init_subclass__()
         cls.__discord_ui_compiled_template__ = re.compile(template) if isinstance(template, str) else template
         if not isinstance(cls.__discord_ui_compiled_template__, re.Pattern):
