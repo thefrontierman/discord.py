@@ -670,40 +670,38 @@ class HTTPClient:
                         # I am unsure if X-Ratelimit-Bucket is always available
                         # However, X-Ratelimit-Remaining has been a consistent cornerstone that worked
                         has_ratelimit_headers = 'X-Ratelimit-Remaining' in response.headers
-                        if discord_hash is not None:
-                            # If the hash Discord has provided is somehow different from our current hash something changed
-                            if bucket_hash != discord_hash:
-                                if bucket_hash is not None:
-                                    # If the previous hash was an actual Discord hash then this means the
-                                    # hash has changed sporadically.
-                                    # This can be due to two reasons
-                                    # 1. It's a sub-ratelimit which is hard to handle
-                                    # 2. The rate limit information genuinely changed
-                                    # There is no good way to discern these, Discord doesn't provide a way to do so.
-                                    # At best, there will be some form of logging to help catch it.
-                                    # Alternating sub-ratelimits means that the requests oscillate between
-                                    # different underlying rate limits -- this can lead to unexpected 429s
-                                    # It is unavoidable.
-                                    fmt = 'A route (%s) has changed hashes: %s -> %s.'
-                                    _log.debug(fmt, route_key, bucket_hash, discord_hash)
+                        # If the hash Discord has provided is somehow different from our current hash something changed
+                        if discord_hash is not None and bucket_hash != discord_hash:
+                            if bucket_hash is not None:
+                                # If the previous hash was an actual Discord hash then this means the
+                                # hash has changed sporadically.
+                                # This can be due to two reasons
+                                # 1. It's a sub-ratelimit which is hard to handle
+                                # 2. The rate limit information genuinely changed
+                                # There is no good way to discern these, Discord doesn't provide a way to do so.
+                                # At best, there will be some form of logging to help catch it.
+                                # Alternating sub-ratelimits means that the requests oscillate between
+                                # different underlying rate limits -- this can lead to unexpected 429s
+                                # It is unavoidable.
+                                fmt = 'A route (%s) has changed hashes: %s -> %s.'
+                                _log.debug(fmt, route_key, bucket_hash, discord_hash)
 
-                                    self._bucket_hashes[route_key] = discord_hash
-                                    self._buckets[f'{discord_hash}:{route.major_parameters}'] = ratelimit
-                                    self._buckets.pop(key, None)
-                                elif route_key not in self._bucket_hashes:
-                                    fmt = '%s has found its initial rate limit bucket hash (%s).'
-                                    _log.debug(fmt, route_key, discord_hash)
-                                    self._bucket_hashes[route_key] = discord_hash
-                                    self._buckets[f'{discord_hash}:{route.major_parameters}'] = ratelimit
+                                self._bucket_hashes[route_key] = discord_hash
+                                self._buckets[f'{discord_hash}:{route.major_parameters}'] = ratelimit
+                                self._buckets.pop(key, None)
+                            elif route_key not in self._bucket_hashes:
+                                fmt = '%s has found its initial rate limit bucket hash (%s).'
+                                _log.debug(fmt, route_key, discord_hash)
+                                self._bucket_hashes[route_key] = discord_hash
+                                self._buckets[f'{discord_hash}:{route.major_parameters}'] = ratelimit
 
-                        if has_ratelimit_headers:
-                            if response.status != 429:
-                                ratelimit.update(response, use_clock=self.use_clock)
-                                if ratelimit.remaining == 0:
-                                    _log.debug(
-                                        'A rate limit bucket (%s) has been exhausted. Pre-emptively rate limiting...',
-                                        discord_hash or route_key,
-                                    )
+                        if has_ratelimit_headers and response.status != 429:
+                            ratelimit.update(response, use_clock=self.use_clock)
+                            if ratelimit.remaining == 0:
+                                _log.debug(
+                                    'A rate limit bucket (%s) has been exhausted. Pre-emptively rate limiting...',
+                                    discord_hash or route_key,
+                                )
 
                         # the request was successful so just return the text/json
                         if 300 > response.status >= 200:
