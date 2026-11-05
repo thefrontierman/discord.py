@@ -182,9 +182,8 @@ class Namespace:
         guild = interaction.guild
         type = AppCommandOptionType.user.value
         for user_id, user_data in resolved.get('users', {}).items():
-            try:
-                member_data = members[user_id]
-            except KeyError:
+            member_data = members.get(user_id)
+            if member_data is None:
                 completed[ResolveKey(id=user_id, type=type)] = state.create_user(user_data)
             else:
                 member_data['user'] = user_data
