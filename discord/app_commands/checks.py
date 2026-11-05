@@ -87,7 +87,7 @@ class Cooldown:
         The length of the cooldown period in seconds.
     """
 
-    __slots__ = ('rate', 'per', '_window', '_tokens', '_last')
+    __slots__ = ('_last', '_tokens', '_window', 'per', 'rate')
 
     def __init__(self, rate: float, per: float) -> None:
         self.rate: int = int(rate)
