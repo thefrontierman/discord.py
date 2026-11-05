@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union
 
 from .utils import snowflake_time, _get_as_snowflake, resolve_invite
 from .user import BaseUser
@@ -254,12 +254,12 @@ class Widget:
         self.name: str = data['name']
         self.id: int = int(data['id'])
 
-        self.channels: List[WidgetChannel] = []
+        self.channels: list[WidgetChannel] = []
         for channel in data.get('channels', []):
             _id = int(channel['id'])
             self.channels.append(WidgetChannel(id=_id, name=channel['name'], position=channel['position']))
 
-        self.members: List[WidgetMember] = []
+        self.members: list[WidgetMember] = []
         channels = {channel.id: channel for channel in self.channels}
         for member in data.get('members', []):
             connected_channel = _get_as_snowflake(member, 'channel_id')
