@@ -26,8 +26,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar, List, Optional, Sequence
 
 __all__ = (
-    'AppInstallationType',
     'AppCommandContext',
+    'AppInstallationType',
 )
 
 if TYPE_CHECKING:
