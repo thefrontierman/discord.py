@@ -234,14 +234,12 @@ class CogMeta(type):
                         raise TypeError(no_bot_cog.format(base, elem))
                     cog_app_commands[elem] = value
                 elif _iscoroutinefunction(value):
-                    try:
-                        getattr(value, '__cog_listener__')
-                    except AttributeError:
+                    if not hasattr(value, '__cog_listener__'):
                         continue
-                    else:
-                        if elem.startswith(('cog_', 'bot_')):
-                            raise TypeError(no_bot_cog.format(base, elem))
-                        listeners[elem] = value
+
+                    if elem.startswith(('cog_', 'bot_')):
+                        raise TypeError(no_bot_cog.format(base, elem))
+                    listeners[elem] = value
 
         new_cls.__cog_commands__ = list(commands.values())  # this will be copied in Cog.__new__
         new_cls.__cog_app_commands__ = list(cog_app_commands.values())
