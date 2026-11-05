@@ -1205,7 +1205,7 @@ class InteractionResponse(Generic[ClientT]):
             message_id = None
 
         if parent.type not in (InteractionType.component, InteractionType.modal_submit):
-            return
+            return None
 
         if view is not MISSING and message_id is not None:
             state.prevent_view_updates_for(message_id)
