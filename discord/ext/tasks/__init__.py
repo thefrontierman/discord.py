@@ -680,8 +680,7 @@ class Loop(Generic[LF]):
             start = now.astimezone(time.tzinfo)
             if time >= start.timetz():
                 return idx
-        else:
-            return None
+        return None
 
     def _get_time_parameter(
         self,
