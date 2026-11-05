@@ -702,8 +702,7 @@ class VoiceConnectionState:
                             if self.state is not ConnectionFlowState.disconnected:
                                 await self.disconnect()
                             break
-                        else:
-                            continue
+                        continue
 
                     if exc.code == 4021:
                         _log.warning('We are being ratelimited while trying to connect to voice. Disconnecting...')
