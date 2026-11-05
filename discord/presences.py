@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional, Tuple
+from typing import TYPE_CHECKING, Optional
 
 from .activity import create_activity
 from .enums import Status, try_enum
@@ -146,6 +146,6 @@ class RawPresenceUpdateEvent(_RawReprMixin):
     def __init__(self, *, data: PartialPresenceUpdate, state: ConnectionState) -> None:
         self.user_id: int = int(data['user']['id'])
         self.client_status: ClientStatus = ClientStatus(status=data['status'], data=data['client_status'])
-        self.activities: Tuple[ActivityTypes, ...] = tuple(create_activity(d, state) for d in data['activities'])
+        self.activities: tuple[ActivityTypes, ...] = tuple(create_activity(d, state) for d in data['activities'])
         self.guild_id: Optional[int] = _get_as_snowflake(data, 'guild_id')
         self.guild: Optional[Guild] = state._get_guild(self.guild_id)
