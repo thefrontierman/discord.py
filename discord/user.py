@@ -559,8 +559,7 @@ class User(BaseUser, discord.abc.Messageable):
         return f'<User id={self.id} name={self.name!r} global_name={self.global_name!r} bot={self.bot}>'
 
     async def _get_channel(self) -> DMChannel:
-        ch = await self.create_dm()
-        return ch
+        return await self.create_dm()
 
     @property
     def dm_channel(self) -> Optional[DMChannel]:
