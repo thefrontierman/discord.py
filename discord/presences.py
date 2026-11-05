@@ -69,7 +69,7 @@ class ClientStatus:
             ('mobile', self.mobile),
             ('web', self.web),
         ]
-        inner = ' '.join('%s=%r' % t for t in attrs)
+        inner = ' '.join(f'{name}={value!r}' for name, value in attrs)
         return f'<{self.__class__.__name__} {inner}>'
 
     def _update(self, status: str, data: ClientStatusPayload, /) -> None:
