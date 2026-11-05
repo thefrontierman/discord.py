@@ -652,7 +652,7 @@ class FlagConverter(metaclass=FlagsMeta):
                 values = arguments[name]
             except KeyError:
                 if flag.required:
-                    raise MissingRequiredFlag(flag)
+                    raise MissingRequiredFlag(flag) from None
                 else:
                     if callable(flag.default):
                         # Type checker does not understand flag.default is a Callable
