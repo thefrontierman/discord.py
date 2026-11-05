@@ -173,6 +173,7 @@ class Cooldown:
         # check if we are rate limited and return retry-after
         if self._tokens < 0:
             return self.per - (current - self._window)
+        return None
 
     def reset(self) -> None:
         """Reset the cooldown to its initial state."""
