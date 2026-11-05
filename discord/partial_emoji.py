@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, TYPE_CHECKING, Union
+from typing import Any, Dict, Optional, TYPE_CHECKING
 import re
 
 from .asset import Asset, AssetMixin
@@ -107,7 +107,7 @@ class PartialEmoji(_EmojiTag, AssetMixin):
         self._state: Optional[ConnectionState] = None
 
     @classmethod
-    def from_dict(cls, data: Union[PartialEmojiPayload, ActivityEmoji, Dict[str, Any]]) -> Self:
+    def from_dict(cls, data: PartialEmojiPayload | ActivityEmoji | Dict[str, Any]) -> Self:
         return cls(
             animated=data.get('animated', False),
             id=utils._get_as_snowflake(data, 'id'),
