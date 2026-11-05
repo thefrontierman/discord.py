@@ -66,13 +66,13 @@ class Collectible:
     """
 
     __slots__ = (
-        'type',
-        'sku_id',
-        'label',
-        'expires_at',
-        'palette',
-        '_state',
         '_asset',
+        '_state',
+        'expires_at',
+        'label',
+        'palette',
+        'sku_id',
+        'type',
     )
 
     def __init__(self, *, state: ConnectionState, type: str, data: CollectiblePayload) -> None:
