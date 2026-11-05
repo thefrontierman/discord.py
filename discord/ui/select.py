@@ -212,7 +212,7 @@ class BaseSelect(Item[V]):
         ordering. The row number must be between 0 and 4 (i.e. zero indexed).
     """
 
-    __slots__ = ('_provided_custom_id', '_underlying', 'row', '_values')
+    __slots__ = ('_provided_custom_id', '_underlying', '_values', 'row')
 
     __item_repr_attributes__: Tuple[str, ...] = (
         'placeholder',
