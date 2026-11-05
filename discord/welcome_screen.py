@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Optional, TYPE_CHECKING, Union
+from typing import List, Optional, TYPE_CHECKING
 from .utils import _get_as_snowflake, get, MISSING
 from .partial_emoji import _EmojiTag
 
@@ -62,7 +62,7 @@ class WelcomeChannel:
     """
 
     def __init__(
-        self, *, channel: Snowflake, description: str, emoji: Optional[Union[PartialEmoji, Emoji, str]] = None
+        self, *, channel: Snowflake, description: str, emoji: PartialEmoji | Emoji | str | None = None
     ) -> None:
         self.channel = channel
         self.description = description
