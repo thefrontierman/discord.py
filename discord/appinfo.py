@@ -24,6 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
+import contextlib
 from typing import List, TYPE_CHECKING, Literal, Optional
 
 from . import utils
@@ -639,7 +640,5 @@ class IntegrationTypeConfig:
 
     def __init__(self, data: AppIntegrationTypeConfigPayload) -> None:
         self.oauth2_install_params: Optional[AppInstallParams] = None
-        try:
+        with contextlib.suppress(KeyError):
             self.oauth2_install_params = AppInstallParams(data['oauth2_install_params'])  # type: ignore # EAFP
-        except KeyError:
-            pass
