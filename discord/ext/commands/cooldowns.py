@@ -186,7 +186,7 @@ class _Semaphore:
     overkill for what is basically a counter.
     """
 
-    __slots__ = ('value', 'loop', '_waiters')
+    __slots__ = ('_waiters', 'loop', 'value')
 
     def __init__(self, number: int) -> None:
         self.value: int = number
@@ -234,7 +234,7 @@ class _Semaphore:
 
 
 class MaxConcurrency:
-    __slots__ = ('number', 'per', 'wait', '_mapping')
+    __slots__ = ('_mapping', 'number', 'per', 'wait')
 
     def __init__(self, number: int, *, per: BucketType, wait: bool) -> None:
         self._mapping: Dict[Any, _Semaphore] = {}
