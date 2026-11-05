@@ -50,12 +50,12 @@ if TYPE_CHECKING:
     from .context import Context
 
 __all__ = (
-    'Parameter',
-    'parameter',
-    'param',
     'Author',
     'CurrentChannel',
     'CurrentGuild',
+    'Parameter',
+    'param',
+    'parameter',
 )
 
 
