@@ -75,7 +75,7 @@ class TranslationContext(Generic[_L, _D]):
 
     @overload
     def __init__(
-        self, location: Literal[TranslationContextLocation.command_name], data: Union[Command[Any, ..., Any], ContextMenu]
+        self, location: Literal[TranslationContextLocation.command_name], data: Command[Any, ..., Any] | ContextMenu
     ) -> None: ...
 
     @overload
