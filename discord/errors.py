@@ -140,7 +140,7 @@ class HTTPException(DiscordException):
             self._errors: Optional[Dict[str, Any]] = errors
             if errors:
                 errors = _flatten_error_dict(errors)
-                helpful = '\n'.join('In %s: %s' % t for t in errors.items())
+                helpful = '\n'.join(f'In {t[0]}: {t[1]}' for t in errors.items())
                 self.text = base + '\n' + helpful
             else:
                 self.text = base
