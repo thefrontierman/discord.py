@@ -661,12 +661,12 @@ class ScheduledEvent(Hashable):
                 data = filter(predicate, data)
 
             users = (self._state.store_user(raw_user['user']) for raw_user in data)
-            count = 0
+            _count = 0
 
-            for count, user in enumerate(users, 1):
+            for _count, user in enumerate(users, 1):
                 yield user
 
-            if count < 100:
+            if _count < 100:
                 # There's no data left after this
                 break
 
