@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional, TypedDict
+from typing import Literal, Optional, TypedDict
 from typing_extensions import NotRequired
 from .user import User
 from .snowflake import Snowflake
@@ -38,7 +38,7 @@ class PartialPresenceUpdate(TypedDict):
     user: User
     guild_id: Snowflake
     status: StatusType
-    activities: List[Activity]
+    activities: list[Activity]
     client_status: ClientStatus
 
 
@@ -55,7 +55,7 @@ class ActivityTimestamps(TypedDict, total=False):
 
 class ActivityParty(TypedDict, total=False):
     id: str
-    size: List[int]
+    size: list[int]
 
 
 class ActivityAssets(TypedDict, total=False):
@@ -105,7 +105,7 @@ class Activity(_BaseActivity, total=False):
     secrets: ActivitySecrets
     session_id: Optional[str]
     instance: bool
-    buttons: List[str]
+    buttons: list[str]
     sync_id: str
     state_url: str
     details_url: str
