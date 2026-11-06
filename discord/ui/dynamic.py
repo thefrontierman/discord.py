@@ -23,7 +23,7 @@ DEALINGS IN THE SOFTWARE.
 """
 
 from __future__ import annotations
-from typing import ClassVar, Dict, Generic, Optional, Tuple, Type, TypeVar, TYPE_CHECKING, Any, Union
+from typing import ClassVar, Dict, Generic, Tuple, Type, TypeVar, TYPE_CHECKING, Any, Union
 import re
 
 from .item import Item
@@ -99,7 +99,7 @@ class DynamicItem(Generic[BaseT], Item[Union[View, LayoutView]]):
         self,
         item: BaseT,
         *,
-        row: Optional[int] = None,
+        row: int | None = None,
     ) -> None:
         super().__init__()
         self.item: BaseT = item
@@ -157,11 +157,11 @@ class DynamicItem(Generic[BaseT], Item[Union[View, LayoutView]]):
         self._provided_custom_id = True
 
     @property
-    def row(self) -> Optional[int]:
+    def row(self) -> int | None:
         return self.item._row
 
     @row.setter
-    def row(self, value: Optional[int]) -> None:
+    def row(self, value: int | None) -> None:
         self.item.row = value
 
     @property
