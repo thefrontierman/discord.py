@@ -131,7 +131,7 @@ class SoundboardDefaultSound(BaseSoundboardSound):
         The emoji of the sound.
     """
 
-    __slots__ = ('name', 'emoji')
+    __slots__ = ('emoji', 'name')
 
     def __init__(self, *, state: ConnectionState, data: SoundboardDefaultSoundPayload):
         self.name: str = data['name']
@@ -184,7 +184,7 @@ class SoundboardSound(BaseSoundboardSound):
         Whether this sound is available for use.
     """
 
-    __slots__ = ('_state', 'name', 'emoji', '_user', 'available', '_user_id', 'guild')
+    __slots__ = ('_state', '_user', '_user_id', 'available', 'emoji', 'guild', 'name')
 
     def __init__(self, *, guild: Guild, state: ConnectionState, data: SoundboardSoundPayload):
         super().__init__(state=state, data=data)
