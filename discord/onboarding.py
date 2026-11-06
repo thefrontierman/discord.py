@@ -94,15 +94,15 @@ class OnboardingPromptOption(Hashable):
     """
 
     __slots__ = (
-        'title',
-        'emoji',
-        'description',
-        'id',
-        'channel_ids',
-        'role_ids',
-        '_guild',
         '_cs_channels',
         '_cs_roles',
+        '_guild',
+        'channel_ids',
+        'description',
+        'emoji',
+        'id',
+        'role_ids',
+        'title',
     )
 
     def __init__(
@@ -238,14 +238,14 @@ class OnboardingPrompt:
     """
 
     __slots__ = (
-        'id',
-        'type',
-        'title',
-        'options',
-        'single_select',
-        'required',
-        'in_onboarding',
         '_guild',
+        'id',
+        'in_onboarding',
+        'options',
+        'required',
+        'single_select',
+        'title',
+        'type',
     )
 
     def __init__(
@@ -336,13 +336,13 @@ class Onboarding:
     """
 
     __slots__ = (
-        '_state',
         '_cs_default_channels',
-        'guild',
-        'prompts',
+        '_state',
         'default_channel_ids',
         'enabled',
+        'guild',
         'mode',
+        'prompts',
     )
 
     def __init__(self, *, data: OnboardingPayload, guild: Guild, state: ConnectionState) -> None:
