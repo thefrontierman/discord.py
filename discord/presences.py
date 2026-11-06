@@ -141,7 +141,7 @@ class RawPresenceUpdateEvent(_RawReprMixin):
         if they are listening to a song with a title longer than ``128`` characters. See :issue:`1738` for more information.
     """
 
-    __slots__ = ('user_id', 'guild_id', 'guild', 'client_status', 'activities')
+    __slots__ = ('activities', 'client_status', 'guild', 'guild_id', 'user_id')
 
     def __init__(self, *, data: PartialPresenceUpdate, state: ConnectionState) -> None:
         self.user_id: int = int(data['user']['id'])
