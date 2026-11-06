@@ -157,33 +157,33 @@ class AppInfo:
     """
 
     __slots__ = (
-        '_state',
-        'description',
-        'id',
-        'name',
-        'rpc_origins',
-        'bot_public',
-        'bot_require_code_grant',
-        'owner',
-        '_icon',
-        'verify_key',
-        'team',
-        'guild_id',
-        'primary_sku_id',
-        'slug',
         '_cover_image',
         '_flags',
-        'terms_of_service_url',
-        'privacy_policy_url',
-        'tags',
-        'custom_install_url',
-        'install_params',
-        'role_connections_verification_url',
-        'interactions_endpoint_url',
-        'redirect_uris',
+        '_icon',
+        '_integration_types_config',
+        '_state',
         'approximate_guild_count',
         'approximate_user_install_count',
-        '_integration_types_config',
+        'bot_public',
+        'bot_require_code_grant',
+        'custom_install_url',
+        'description',
+        'guild_id',
+        'id',
+        'install_params',
+        'interactions_endpoint_url',
+        'name',
+        'owner',
+        'primary_sku_id',
+        'privacy_policy_url',
+        'redirect_uris',
+        'role_connections_verification_url',
+        'rpc_origins',
+        'slug',
+        'tags',
+        'team',
+        'terms_of_service_url',
+        'verify_key',
     )
 
     def __init__(self, state: ConnectionState, data: AppInfoPayload):
@@ -541,21 +541,21 @@ class PartialAppInfo:
     """
 
     __slots__ = (
-        '_state',
-        'id',
-        'name',
-        'description',
-        'rpc_origins',
-        'verify_key',
-        'terms_of_service_url',
-        'privacy_policy_url',
-        '_icon',
-        '_flags',
         '_cover_image',
+        '_flags',
+        '_icon',
+        '_state',
         'approximate_guild_count',
-        'redirect_uris',
+        'description',
+        'id',
         'interactions_endpoint_url',
+        'name',
+        'privacy_policy_url',
+        'redirect_uris',
         'role_connections_verification_url',
+        'rpc_origins',
+        'terms_of_service_url',
+        'verify_key',
     )
 
     def __init__(self, *, state: ConnectionState, data: PartialAppInfoPayload):
@@ -620,7 +620,7 @@ class AppInstallParams:
         The permissions to give to application in the guild.
     """
 
-    __slots__ = ('scopes', 'permissions')
+    __slots__ = ('permissions', 'scopes')
 
     def __init__(self, data: InstallParamsPayload) -> None:
         self.scopes: List[str] = data.get('scopes', [])
