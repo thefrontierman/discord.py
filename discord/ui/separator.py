@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal, Optional, TypeVar
+from typing import TYPE_CHECKING, Literal, TypeVar
 
 from .item import Item
 from ..components import SeparatorComponent
@@ -70,7 +70,7 @@ class Separator(Item[V]):
         *,
         visible: bool = True,
         spacing: SeparatorSpacing = SeparatorSpacing.small,
-        id: Optional[int] = None,
+        id: int | None = None,
     ) -> None:
         super().__init__()
         self._underlying = SeparatorComponent._raw_construct(
@@ -84,12 +84,12 @@ class Separator(Item[V]):
         return True
 
     @property
-    def id(self) -> Optional[int]:
+    def id(self) -> int | None:
         """Optional[:class:`int`]: The ID of this separator."""
         return self._underlying.id
 
     @id.setter
-    def id(self, value: Optional[int]) -> None:
+    def id(self, value: int | None) -> None:
         self._underlying.id = value
 
     @property
