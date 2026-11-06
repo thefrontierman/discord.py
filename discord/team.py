@@ -62,7 +62,7 @@ class Team:
         .. versionadded:: 1.3
     """
 
-    __slots__ = ('_state', 'id', 'name', '_icon', 'owner_id', 'members')
+    __slots__ = ('_icon', '_state', 'id', 'members', 'name', 'owner_id')
 
     def __init__(self, state: ConnectionState, data: TeamPayload) -> None:
         self._state: ConnectionState = state
@@ -136,7 +136,7 @@ class TeamMember(BaseUser):
         .. versionadded:: 2.4
     """
 
-    __slots__ = ('team', 'membership_state', 'permissions', 'role')
+    __slots__ = ('membership_state', 'permissions', 'role', 'team')
 
     def __init__(self, team: Team, state: ConnectionState, data: TeamMemberPayload) -> None:
         self.team: Team = team
