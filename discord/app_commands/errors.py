@@ -76,8 +76,6 @@ class AppCommandError(DiscordException):
     .. versionadded:: 2.0
     """
 
-    pass
-
 
 class CommandInvokeError(AppCommandError):
     """An exception raised when the command being invoked raised an exception.
@@ -184,8 +182,6 @@ class CheckFailure(AppCommandError):
 
     .. versionadded:: 2.0
     """
-
-    pass
 
 
 class NoPrivateMessage(CheckFailure):
