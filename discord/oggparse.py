@@ -40,8 +40,6 @@ __all__ = (
 class OggError(DiscordException):
     """An exception that is thrown for Ogg stream parsing errors."""
 
-    pass
-
 
 # https://tools.ietf.org/html/rfc3533
 # https://tools.ietf.org/html/rfc7845
