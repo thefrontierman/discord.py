@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Literal, Optional, TypedDict
+from typing import Literal, TypedDict
 from typing_extensions import NotRequired
 
 from .snowflake import Snowflake
@@ -57,10 +57,10 @@ class PartialWebhook(TypedDict):
 
 
 class _FullWebhook(TypedDict, total=False):
-    name: Optional[str]
-    avatar: Optional[str]
+    name: str | None
+    avatar: str | None
     channel_id: Snowflake
-    application_id: Optional[Snowflake]
+    application_id: Snowflake | None
 
 
 class Webhook(PartialWebhook, _FullWebhook): ...
