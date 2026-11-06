@@ -98,7 +98,7 @@ class ResolvedData(TypedDict, total=False):
     users: Dict[str, User]
     members: Dict[str, Member]
     roles: Dict[str, Role]
-    channels: Dict[str, Union[PartialChannel, PartialThread]]
+    channels: Dict[str, PartialChannel | PartialThread]
     messages: Dict[str, Message]
     attachments: Dict[str, Attachment]
 
@@ -302,7 +302,7 @@ class _BaseInteraction(TypedDict):
     guild_id: NotRequired[Snowflake]
     guild: NotRequired[PartialInteractionGuild]
     channel_id: NotRequired[Snowflake]
-    channel: Union[GuildChannel, InteractionDMChannel, GroupDMChannel]
+    channel: GuildChannel | InteractionDMChannel | GroupDMChannel
     app_permissions: NotRequired[str]
     locale: NotRequired[str]
     guild_locale: NotRequired[str]
@@ -384,10 +384,10 @@ class MessageComponentMessageInteractionMetadata(_MessageInteractionMetadata):
 
 class ModalSubmitMessageInteractionMetadata(_MessageInteractionMetadata):
     type: Literal[5]
-    triggering_interaction_metadata: Union[
-        ApplicationCommandMessageInteractionMetadata,
-        MessageComponentMessageInteractionMetadata,
-    ]
+    triggering_interaction_metadata: (
+        ApplicationCommandMessageInteractionMetadata
+        | MessageComponentMessageInteractionMetadata
+    )
 
 
 MessageInteractionMetadata = Union[
