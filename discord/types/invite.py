@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Literal, Optional, TypedDict, Union
+from typing import Literal, TypedDict, Union
 from typing_extensions import NotRequired
 
 from .scheduled_event import GuildScheduledEvent
@@ -47,7 +47,7 @@ class _InviteMetadata(TypedDict, total=False):
 
 
 class VanityInvite(_InviteMetadata):
-    code: Optional[str]
+    code: str | None
     revoked: NotRequired[bool]
 
 
@@ -65,7 +65,7 @@ class Invite(IncompleteInvite, total=False):
     guild_scheduled_event: GuildScheduledEvent
     type: InviteType
     flags: NotRequired[int]
-    expires_at: Optional[str]
+    expires_at: str | None
 
 
 class InviteWithCounts(Invite, _GuildPreviewUnique): ...
@@ -75,7 +75,7 @@ class GatewayInviteCreate(TypedDict):
     channel_id: Snowflake
     code: str
     created_at: str
-    expires_at: Optional[str]
+    expires_at: str | None
     max_age: int
     max_uses: int
     temporary: bool
